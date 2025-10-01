@@ -1,0 +1,10 @@
+.Rhistory
+.Rproj.user/
+.RData
+.Ruserdata
+.DS_Store
+renv/library/
+cache/
+*.Rproj
+*.html
+*.pdf
