@@ -1,7 +1,9 @@
 # Seminario: Exposición a Plomo y Mercurio y Riesgo Genético en Alzheimer y Parkinson (Europa)
 
 **Autores:** Rubén Moreno Ortega, Adrián Orive Rodríguez, Álvaro Carbonell Pastor 
+
 **Curso:** FUENTES DE DATOS BIOMÉDICAS Y WEB SEMÁNTICA
+
 **Fecha:** (se actualizará automáticamente en el RMarkdown)
 
 ## Descripción
