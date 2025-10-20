@@ -1,82 +1,87 @@
 # Seminario: Exposición a Plomo y Mercurio y Riesgo Genético en Alzheimer y Parkinson (Europa)
 
-Autores: (RELLENAR)
-Curso: (RELLENAR)
-Fecha: (se actualizará automáticamente en el RMarkdown)
+**Autores:** Rubén Moreno Ortega, Adrián Orive Rodríguez, Álvaro Carbonell Pastor 
+
+**Curso:** FUENTES DE DATOS BIOMÉDICAS Y WEB SEMÁNTICA
+
+**Fecha:** (se actualizará automáticamente en el RMarkdown)
 
 ## Descripción
-Este repositorio contiene el seminario orientado a Europa que integra datos reales: variantes y genes de riesgo para Alzheimer y Parkinson (GWAS Catalog, p<5e-8), evidencia de interacción químico–gen (CTD) con plomo y mercurio, y biomonitorización de plomo y mercurio en sangre en adultos de seis países europeos (España, Alemania, Francia, Bélgica, Italia y Finlandia) a partir de 2009. Además, se construirá un índice ecológico exploratorio de co-ocurrencia entre percentiles altos de exposición y frecuencias alélicas europeas.
+Este repositorio contiene el seminario orientado a Europa que integra datos reales sobre variantes y genes de riesgo para Alzheimer y Parkinson (GWAS Catalog), evidencia de interacción químico–gen y biomonitorización en sangre para los metales plomo (Pb) y mercurio (Hg). El objetivo es analizar la convergencia entre exposición ambiental y riesgo genético.
 
 ## Alcance
-- Matriz: sangre exclusivamente.
-- Metales: Plomo (Lead) y Mercurio total (en sangre; si algún país solo reporta hair Mercury se documentará pero **no** se incluirá en la tabla principal comparativa).
-- Periodo: Estudios/informes ≥ 2009.
-- Países: España, Alemania, Francia, Bélgica, Italia, Finlandia.
-- Genes/variantes: Se incluirá el conjunto amplio de loci con significancia genome-wide (p<5×10⁻⁸) extraídos de GWAS Catalog para Alzheimer y Parkinson (no solo los clásicos), y se priorizarán subconjuntos para análisis descriptivo.
+- **Matriz:** sangre exclusivamente.
+- **Metales:** Plomo (Lead) y Mercurio total (en sangre).
+- **Países:** España, Alemania, Noruega, Bélgica, Eslovenia y República Checa.
+- **Genes/variantes:** Loci con significancia genome-wide extraídos de GWAS Catalog para Alzheimer y Parkinson.
 
 ## Objetivo General
-Evaluar integrativamente la convergencia entre variantes de riesgo genético para Alzheimer y Parkinson, la evidencia de interacción biológica con plomo y mercurio y los niveles de biomonitorización de estos metales en sangre en poblaciones adultas de seis países europeos, construyendo un índice ecológico exploratorio de co-ocurrencia exposición–frecuencia alélica.
+Evaluar integrativamente la convergencia entre variantes de riesgo genético para Alzheimer y Parkinson, la evidencia de interacción biológica con plomo y mercurio y los niveles de biomonitorización en Europa.
 
 ## Objetivos Específicos
-1. Compilar variantes y genes de riesgo (p < 5×10⁻⁸) para Alzheimer y Parkinson en población europea (GWAS Catalog, filtrando por significancia y anotando descripción de muestra).
-2. Identificar genes de riesgo con interacciones anotadas con plomo o mercurio en CTD, clasificando tipo de evidencia (experimental vs inferred) y PMIDs asociados.
-3. Describir comparativamente percentiles (P50, P90 y P75 si está disponible) de plomo y mercurio en sangre en adultos (≥18 años, o el grupo etario más representativo disponible) en España, Alemania, Francia, Bélgica, Italia y Finlandia (≥2009) documentando fuente, año(s) de muestreo, matriz, método y LOD.
-4. Construir un índice ecológico exploratorio combinando percentiles altos de exposición (P90 escalado) y frecuencias alélicas europeas de variantes clave, discutiendo las limitaciones (heterogeneidad, falacia ecológica, diferencias de subpoblaciones genéticas, métodos analíticos).
+1. Compilar variantes y genes de riesgo para Alzheimer y Parkinson en población europea (GWAS Catalog).
+2. Identificar genes de riesgo con interacciones anotadas con plomo o mercurio en CTD, clasificando tipo de evidencia y PMIDs asociados.
+3. Describir comparativamente percentiles de plomo y mercurio en sangre en adultos en los países seleccionados.
+4. Construir un índice ecológico exploratorio combinando percentiles altos de exposición y frecuencias alélicas europeas.
 
 ## Estructura del Repositorio
+
 ```
 / (raíz)
-├─ README.md
-├─ .gitignore
-├─ seminar_Europa.Rmd
-├─ scripts/
-│  ├─ install_packages.R
-│  ├─ download_gwas_ctd.R
-├─ data/
-│  ├─ raw/
-│  │  ├─ README_data_sources.txt
-│  │  ├─ biomonitoring_extraction_template.csv
-│  │  ├─ allele_frequencies_europe.csv
-│  ├─ processed/ (se generará tras limpiar datos)
-├─ figures/ (salida generada por el RMarkdown)
-├─ output/
-│  ├─ tables/ (tablas finales)
-│  ├─ logs/
-└─ renv/ (opcional si se activa reproducibilidad con renv)
+├─ README.md                # Este documento
+├─ LICENSE                  # Licencia MIT del código
+├─ .gitignore               # Archivos y carpetas ignoradas (R, datos temporales, etc.)
+├─ filtra_exporta_json.py   # Script para filtrar datos de biomonitorización y exportar a JSON
+├─ datos/
+│  ├─ biomonitorizacion_filtrada.json                # Resultados filtrados de biomonitorización, formato JSON
+│  ├─ boxplot - overview (2).csv                    # Fuente principal de biomonitorización (CSV, UTF-16, tabulado)
+│  ├─ gwas-association-downloaded_2025-10-06-MONDO_0004975-withChildTraits.tsv  # Variantes GWAS para Alzheimer
+│  ├─ gwas-association-downloaded_2025-10-06-MONDO_0005180-withChildTraits.tsv  # Variantes GWAS para Parkinson
+│  ├─ ... otros archivos de datos ...
 ```
 
-## Reproducibilidad
-1. Instalar paquetes: `source("scripts/install_packages.R")`
-2. Descargar y procesar GWAS y CTD: `source("scripts/download_gwas_ctd.R")`
-3. Completar manualmente `data/raw/biomonitoring_extraction_template.csv` con percentiles reales y citaciones.
-4. Rellenar frecuencias alélicas reales en `data/raw/allele_frequencies_europe.csv`.
-5. Renderizar: `rmarkdown::render("seminar_Europa.Rmd").`
+## Requisitos y Uso
+
+### Requisitos
+- Python 3.x (para filtrar/exportar datos)
+- Paquetes Python: `pandas`
+- R (para reproducir el análisis y el informe)
+- Paquetes R: ver `scripts/install_packages.R` (no incluido en los archivos listados, pero mencionado en el README original)
+- Editor compatible con codificación UTF-16 para abrir `.csv` original
+
+### Flujo de trabajo
+
+1. **Filtrado de datos de biomonitorización:**
+   - Ejecuta el script Python `filtra_exporta_json.py` para procesar `boxplot - overview (2).csv` y generar `biomonitorizacion_filtrada.json`.
+     - Modifica la ruta del CSV en el script si es necesario.
+     - El script filtra por población general y matrices de sangre, y exporta percentiles relevantes.
+
+2. **Datos GWAS:**
+   - Los archivos `.tsv` en la carpeta `datos/` contienen variantes genéticas asociadas a Alzheimer y Parkinson, descargadas del GWAS Catalog.
+
+3. **Análisis en R:**
+   - (Según README original) Instala dependencias en R y ejecuta los scripts de análisis.
+   - Renderiza el informe principal (no incluido en los datos mostrados) con:  
+     `rmarkdown::render("seminar_Europa.Rmd")`
 
 ## Notas sobre Datos
-- GWAS Catalog y CTD se descargan automáticamente (fecha de acceso quedará registrada en el script). 
-- Los datos de biomonitorización se extraen manualmente de informes PDF (citando página). 
-- Las frecuencias alélicas provienen de gnomAD (Non-Finnish European, Finnish) y 1000 Genomes (IBS, TSI, CEU, GBR, FIN) según disponibilidad.
 
-## Limitaciones
-- Heterogeneidad temporal y metodológica entre estudios nacionales.
-- Falta de microdatos combinando simultáneamente genotipo y exposición.
-- Posible falta de comparabilidad en mercurio si algunos países solo reportan hair vs blood.
-- El índice ecológico no representa riesgo individual ni modela interacciones gen-ambiente reales; es solo una visualización exploratoria.
-
-## Próximos Pasos
-1. Completar plantillas con datos reales.
-2. Ejecutar scripts de descarga.
-3. Generar tablas de intersección gene–metal.
-4. Calcular índice ecológico.
-5. Redactar introducción final y discusión.
+- **biomonitorizacion_filtrada.json:** Contiene percentiles de plomo y mercurio en sangre por país y año, derivados del CSV original.
+- **boxplot - overview (2).csv:** Fuente original de biomonitorización, debe abrirse con codificación UTF-16 y separador tabulación.
+- **gwas-association-downloaded_2025-10-06-MONDO_0004975-withChildTraits.tsv:** Variantes GWAS para Alzheimer.
+- **gwas-association-downloaded_2025-10-06-MONDO_0005180-withChildTraits.tsv:** Variantes GWAS para Parkinson.
 
 ## Licencia
-Se recomienda liberar el código bajo MIT y el texto bajo CC-BY 4.0 (añadir LICENSE si se desea).
 
-## Referencias (ejemplos preliminares)
-- Kunkle et al. (2019) Nature Genetics.
-- Nalls et al. (2019) Nature Genetics.
-- CTD (http://ctdbase.org/).
-- gnomAD Consortium.
-- 1000 Genomes Project Consortium.
-- Informes HBM4EU / GerES V / ESTEBAN / FLEHS / BIOAMBIENT.ES (citas completas se añadirán en el RMarkdown).
+El código fuente está bajo licencia MIT (ver archivo LICENSE). Se recomienda liberar el texto bajo CC-BY 4.0.
+
+## Referencias
+
+- GWAS Catalog
+- CTD (http://ctdbase.org/)
+- gnomAD Consortium
+- 1000 Genomes Project Consortium
+- Informes HBM4EU / GerES V / ESTEBAN / FLEHS / BIOAMBIENT.ES
+
+---
+
