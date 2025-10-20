@@ -1,0 +1,181 @@
+measure_id,measure_name,location_id,location_name,sex_id,sex_name,age_id,age_name,cause_id,cause_name,metric_id,metric_name,year,val,upper,lower
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2005,685.5723654727867,1795.4561891076855,173.77259389023047
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2005,0.03780778143528384,0.09933932162979199,0.009425751470870554
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2009,6954.443990872258,17689.101518766754,1843.2880577043265
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2009,0.06706670185647348,0.1706865387653972,0.01765679512011853
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2009,26624.1188570072,67160.57301430829,6812.356906278235
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2009,0.06967683371785799,0.1758464331510145,0.017825302542408397
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2007,2798.4585277352066,7141.024472631114,728.3082769742442
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2007,0.06706636753894153,0.1711854956538794,0.017561997164113288
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2006,51876.895432715864,127184.69359101105,13362.457954325891
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2006,0.06307130177358308,0.15466474033015323,0.0162672040529668
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2007,6568.06485233176,16646.60578820485,1740.4960670596352
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2007,0.06484808421675714,0.164112850897025,0.017138708074171376
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2007,24941.554084108677,62736.257367582184,6444.102925327832
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2007,0.06552191693254061,0.16494590748484014,0.0169065110404791
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2005,2694.401729048142,6895.663431294257,703.140182928507
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2005,0.06522819570304329,0.16709977167898007,0.0170491266217783
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2005,6198.0091404604345,15754.949247792601,1639.7847015860593
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2005,0.06087068560494253,0.15492917687006574,0.016067706267389466
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2010,834.2530235451212,2206.0808140266913,208.40862602729507
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2010,0.04503112557861832,0.11841984271584867,0.011449180567113044
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2005,51147.908004955614,125436.62349027352,13162.606818373652
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2005,0.06208772155764513,0.1525034004434996,0.015948782978210164
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2009,54552.69106507651,134760.85164152624,14134.853556934715
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2009,0.06422522114350561,0.15845133056736907,0.016634729550519645
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2005,23398.935805125493,59193.337442368065,6066.829465712681
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2005,0.06168687547950641,0.15620738619724328,0.015987332446957946
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2008,2843.1457455636864,7282.3238483503355,747.8741414536984
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2008,0.06830958770653128,0.1747720806565372,0.017923629906756052
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2007,52458.77173524261,128959.27826888017,13578.03245469973
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2007,0.06329798677180401,0.15555542944503717,0.016385787284204346
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2005,3027.959549489493,8198.186838459294,739.9297268252279
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2005,0.027915738151188252,0.07628327961454957,0.00683011070298522
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2009,3382.548769644636,9515.26983667437,825.3438410964641
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2009,0.03187315077299203,0.08851791324102405,0.0077067045928434115
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2008,765.4499435387158,1987.8675433169026,198.99759130738337
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2008,0.041997371749901785,0.11022963633074252,0.010666835075206839
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2008,53119.85582433237,131240.38216363516,13742.667986440418
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2008,0.06321801739144979,0.1559534889886569,0.016375571033932737
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2010,56244.19919868909,137753.16742028447,14686.9568332828
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2010,0.06612711912432116,0.16220784701934426,0.017274030050548582
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2010,2925.637141728437,7407.705885562864,769.8893806793817
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2010,0.0708834022064365,0.17960775496040457,0.018711512077486014
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2006,712.4093705167452,1886.8554689915554,179.98669380721955
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2006,0.03904925837946671,0.10303198621676442,0.009954526796367862
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2011,57362.38923629378,140987.13748376863,14947.809436547299
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2011,0.06744764550517565,0.16569206880654783,0.017556926495416774
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2013,60094.81508788059,147911.5854693078,15750.07224971752
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2013,0.06815441778569661,0.16772494666171636,0.017876982466822088
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2007,3177.797545188503,8683.685111951609,787.175983461324
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2007,0.030335770540207283,0.08352222617859692,0.007475896142164784
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2006,24112.774733821443,60996.34833331915,6259.199350117508
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2006,0.06410776662854832,0.16231223742928708,0.016627359737621326
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2010,27469.550381984103,68962.59476346707,7078.356193589893
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2010,0.07190612099093979,0.18058777589390507,0.018518882741605736
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2010,3533.192895797098,9761.100329114674,839.2355244340629
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2010,0.033163559064100484,0.09129741122366745,0.007928081103332495
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2006,2747.0626563137903,7020.342861925898,721.96369789547
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2006,0.06650196609418478,0.17025756604916373,0.017427324335874777
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2010,7217.070264435819,18188.026405427925,1912.2799059387228
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2010,0.06927021738635177,0.17489591508925023,0.018248927971689127
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2008,6751.009160482202,17294.216899857463,1792.135753291161
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2008,0.06576786403987737,0.16800031085499528,0.017366382138034552
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2016,66858.53464727737,162665.8568609934,17663.20844899668
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2016,0.07208166433926533,0.17558769373043898,0.019049564268595248
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2014,62016.726315666274,151243.6020110079,16523.14322785343
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2014,0.07029914704667684,0.171532004955748,0.018695066168485285
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2006,3096.851368649502,8539.699605778593,763.4832846836417
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2006,0.029421571242088638,0.0808963417254206,0.007253862614581117
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2012,58763.20951027435,144941.08396628496,15401.031019337775
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2012,0.06804774992812959,0.16776719372606042,0.017807125198314084
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2006,6389.672995102705,16144.121602171064,1691.784504856723
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2006,0.06353532579494892,0.1606195376508663,0.01678231747523646
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2008,3270.022715361738,9074.213963765073,800.8558515684626
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2008,0.030937667994330613,0.08624008790462286,0.007513811120522946
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2008,25800.682788692888,65326.23227827407,6638.10601845538
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2008,0.06728400725253536,0.17058310669674134,0.017299158784884985
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2009,2885.7391009459984,7374.866014201671,763.729923923931
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2009,0.06964470457979961,0.1774499893435907,0.018391123510552804
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2009,796.402314290407,2111.6771498618677,205.41978960228633
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2009,0.04341883851324856,0.11361224451390681,0.011054959176623034
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2012,903.1649526674684,2345.3009540259873,226.03266815631775
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2012,0.04724889443870366,0.12544966639112592,0.01184586478538716
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2011,3688.786743109656,10065.524691491448,882.6135633117767
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2011,0.03431783648622555,0.09442478984351495,0.008224143971554496
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2015,64115.447561010165,156397.75167464404,17170.80329968317
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2015,0.07042015166478686,0.17217373807284578,0.018876896735883563
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2007,737.6413011306261,1935.2100151945078,184.9943265372879
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2007,0.04007427735893169,0.10589490564143074,0.010161378367799402
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2018,71826.6476457478,174197.02902363465,19193.573581195313
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2018,0.07602003766004824,0.18461310420003157,0.020273151212544697
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2012,2987.6687649413675,7640.955945765088,788.151305186549
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2012,0.07179550918663287,0.1823089959868817,0.019025335222273544
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2019,74732.96448306303,180288.36673328775,20307.643051431998
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2019,0.07960288350661231,0.19221038242213298,0.021664454486944845
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2012,29576.889072432245,73755.45760801829,7682.900425084992
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2012,0.07514301751711101,0.1873996167478819,0.019549313146243415
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2017,69042.78730418913,167379.50734121806,18287.741397542817
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2017,0.07405940636964088,0.17991274326278442,0.01957985642696019
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2014,8001.207320351413,19940.6868176191,2068.429980333614
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2014,0.07503834098836006,0.18735836634421146,0.019381017102899235
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2012,3836.8329739487385,10480.260729991327,925.7413509155024
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2012,0.03555337661108904,0.09767960764270503,0.008544998959919331
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2014,31461.65927003346,77650.66527785634,8290.368679678457
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2014,0.0791033316456612,0.19531580545622348,0.02078581238823843
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2015,1000.2102592381705,2638.531535981373,248.14105136411467
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2015,0.05132879851205026,0.13629161805408466,0.012737360714705824
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2013,933.8589943056933,2479.5024999114885,231.34306630215167
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2013,0.04899370339565484,0.1304190853172986,0.012233365091105862
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2014,4099.819157411163,11260.76276596181,996.0898068319921
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2014,0.03830346400892623,0.10490052154415182,0.009373967223144031
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2012,7624.61190118252,19127.11582087509,2015.43029492943
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2012,0.07110224604716248,0.17900546286532276,0.018808317400185442
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2013,2997.370186892892,7590.482171764198,798.261321910793
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2013,0.07237640533775704,0.18333462464599556,0.019162635222256464
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2011,28536.017396040264,71489.98136086918,7358.477363833155
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2011,0.07362108157115083,0.18443535193073252,0.01892633039029355
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2015,32485.956623347603,80258.13231863583,8469.267527909014
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2015,0.07888093248771352,0.1950023585630269,0.020620436836040066
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2013,7820.294675457819,19535.812461244743,2038.6053390531833
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2013,0.07247135952134617,0.1817730972570658,0.01891545826198008
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2013,30439.1033203439,75196.5931579897,8005.122843627009
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2013,0.07765302233289463,0.19218565139738714,0.020411252388434956
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2011,7408.528316449007,18630.58181644806,1957.9031447555076
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2011,0.07053020412477216,0.1776541266874364,0.018599590169419585
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2011,870.0772075711051,2273.539502750986,221.8314022444427
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2011,0.04678880791447264,0.12355968465238752,0.011916814632222565
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2016,4403.723117013795,11789.228945225444,1086.8306952063786
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2016,0.040155759128507516,0.10818360532478807,0.00994038621534578
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2011,2972.7614148061084,7551.042245291836,783.3986799619498
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2011,0.07085383545410257,0.1797263670360279,0.018744194005420645
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2015,3024.1137713931257,7631.430111987489,806.2045794252689
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2015,0.07443824671092282,0.18749915035347933,0.019827191098079393
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2015,4257.6368070355675,11605.77586361725,1049.3286323469988
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2015,0.03897246881042092,0.10670421088782035,0.00962264086885813
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2015,8284.019154459624,20671.249333654323,2152.313010669259
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2015,0.07616877955102053,0.19010710391805918,0.01971206030094439
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2017,1091.2666652718167,2871.412217490471,263.1370815963755
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2017,0.05382418052338017,0.14259153324223325,0.013174302332883718
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2018,4666.3994406734755,12430.830412595129,1179.0085055517015
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2018,0.041461236949178165,0.11046747559303978,0.01048254798726501
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2017,3070.5717846504117,7715.178010970429,813.4833335354281
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2017,0.07568045922172952,0.19025830461050125,0.020107764102461442
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2014,959.8914690862555,2532.4281670887726,241.0869834940828
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2014,0.05212546753060283,0.13806085356260653,0.012912149476270254
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2014,3007.1654499290885,7622.979112944839,802.0273011167843
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2014,0.07390576366568719,0.1863279905757994,0.01970181147899053
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2013,3968.2909422767434,10888.371230187166,959.6270490713056
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2013,0.03664610617984642,0.10078736456479545,0.008880880491077414
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2019,4782.084074854711,12665.888207964257,1214.9723935431232
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2019,0.04232058230662709,0.11226503885589904,0.010733725252619748
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2017,8589.539211766745,21480.437872123955,2245.55471861785
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2017,0.07852012442687095,0.1965115119796082,0.020545605940088817
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2017,4539.090973782043,12104.854250360011,1130.062083057663
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2017,0.040901126235215364,0.10965567805872221,0.010240795471742002
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2016,8462.380695690063,21128.13711155394,2210.758292367017
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2016,0.0777053820952284,0.1937051017155819,0.020172082856362208
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2016,1042.77928599427,2734.881106260892,255.9500850192553
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2016,0.05278345044578639,0.13947728116476044,0.013124111528450133
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2017,34118.91657311475,84994.5408037994,9037.584900303982
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2017,0.08135727700550996,0.20218218487927764,0.02159189237607453
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2016,3045.661448474794,7675.726358188388,813.6320197846993
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2016,0.07441166857361445,0.1874180812464199,0.019813619709205872
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2019,1170.1827966236224,3062.3628489522434,298.7479854307349
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2019,0.057303305573425285,0.14983068118535137,0.014470428081439845
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2018,1134.552487569365,2959.0797726870273,278.20492620156296
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2018,0.05573989273336186,0.14693201585819074,0.013821894913689743
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2018,3113.4631526547187,7861.923984604427,833.296609706964
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2018,0.07630721459247264,0.19183317576895442,0.020300349286863816
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2018,8701.581175219464,21818.93861994833,2336.025622858566
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2018,0.07899443305250677,0.19736182052276768,0.02123642680634018
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2016,33299.674778779954,82583.44702946597,8778.065827352082
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2016,0.08062682345602928,0.19988275881615722,0.0212681781805143
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2019,8795.47436949727,22109.75406816328,2349.7612059345042
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2019,0.08001784174102322,0.19982398803245036,0.021357612925944444
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2019,35080.79800709421,85937.91196723639,9592.510147695066
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2019,0.08353157238137547,0.204166565005297,0.022825100624924405
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2018,34671.00773694967,86102.81867591482,9311.474843874994
+1,Muertes,92,España,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2018,0.08197984650195338,0.20306960336528296,0.022003582280326443
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,1,Número,2019,3149.608945901963,7869.838168106966,841.0677658209534
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,543,Enfermedad de Alzheimer y otras demencias,2,Porcentaje,2019,0.07749800249484949,0.19471426933113636,0.02060860571088791
