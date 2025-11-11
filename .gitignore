@@ -1,0 +1,12 @@
+.Rhistory
+.Rproj.user/
+.RData
+.Ruserdata
+.DS_Store
+renv/library/
+cache/
+*.Rproj
+*.html
+*.pdf
+input/CTD_humanos_filtrado.tsv
+input/CTD_chem_gene_ixns (1).tsv

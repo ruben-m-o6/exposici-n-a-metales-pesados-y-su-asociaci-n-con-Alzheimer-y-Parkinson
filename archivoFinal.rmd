@@ -1,0 +1,6 @@
+---
+title: "Exposición a Plomo y Mercurio y Riesgo Genético en Alzheimer y Parkinson"
+author: "Rubén Moreno Ortega, Adrián Orive Rodriguez, Álvaro Carbonell Pastor"
+output: HTML_document
+date: sys.Date
+---

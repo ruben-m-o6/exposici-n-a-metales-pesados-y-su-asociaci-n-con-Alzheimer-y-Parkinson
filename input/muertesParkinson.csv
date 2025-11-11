@@ -1,0 +1,181 @@
+measure_id,measure_name,location_id,location_name,sex_id,sex_name,age_id,age_name,cause_id,cause_name,metric_id,metric_name,year,val,upper,lower
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2005,150.1198380193676,159.25610919921323,136.74968063590973
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2005,0.008279415780059245,0.008738850484991876,0.007591572619583431
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2007,426.4094944962567,451.4148547025457,373.78041059589646
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2007,0.010219759203609003,0.010822053626897973,0.008967454314575119
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2005,410.10664560599463,435.5605786359733,360.4859000400736
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2005,0.009929726664128797,0.01050404409229679,0.008751419376193986
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2009,5189.53432019858,5541.713966773019,4523.03658740418
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2009,0.013579867970776191,0.014505116203434486,0.0118350905795109
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2009,1138.05573328487,1218.0272146544296,1001.014352872673
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2009,0.01097315743842165,0.011714118853176922,0.009667805521646545
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2007,1061.3351750084644,1131.1438833352656,940.6222729945328
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2007,0.010477696825792493,0.01116023967594398,0.009273523876540768
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2005,1002.0005299749903,1064.2787960910082,892.3451052995638
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2005,0.00983993920328408,0.010482666149731345,0.008787660785468299
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2006,9550.683120050015,10158.253272528103,8504.465162842082
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2006,0.011611855854509754,0.012345072524462907,0.010362154132669762
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2007,4863.259731568204,5184.508707665053,4297.310426170875
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2007,0.01277519149471735,0.013596625034596525,0.011278424084586555
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2010,179.12176800838958,191.28950474211564,161.044480455006
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2010,0.009665328610035197,0.010245651686530608,0.008731593386128781
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2009,791.6098589923901,832.4173218033302,740.438840975572
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2009,0.00746031932037254,0.0078048962619384245,0.006962725200745659
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2010,441.2802432101018,468.9312113230635,382.84181376902245
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2010,0.01068839663697694,0.011365334434858605,0.009281222069254046
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2007,752.6065406330002,785.6982560936871,699.7761728190009
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2007,0.0071837314744809515,0.0074845109695258405,0.006711697399589258
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2010,1170.6539745359828,1253.1503325133374,1024.8572281921342
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2010,0.011235283971141274,0.012010791990010098,0.009886865802575136
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2007,9958.667879945353,10606.867483975184,8863.571525454205
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2007,0.012016636256074036,0.01279338138011764,0.010715621954640238
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2008,161.4634098828086,171.75955114053255,145.2469806508118
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2008,0.008861252361504696,0.009378359468603508,0.008037215096669128
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2009,10825.932180601741,11523.594945327348,9617.07585586227
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2009,0.01274516252381798,0.013555074213490781,0.011320903602080754
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2005,9161.456239494222,9737.859478715649,8171.444645955696
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2005,0.011121134920684131,0.011815154735573784,0.009928360032764871
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2008,1099.600530502607,1174.4876863267007,971.5495407353842
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2008,0.010710571089464169,0.011435303304609205,0.009454190938511192
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2006,1030.4695773747358,1098.44312307869,912.7670433867969
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2006,0.010246319674746663,0.01090969844601555,0.009108896995492513
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2005,4568.953447202095,4857.105349019385,4058.081764152402
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2005,0.012043766059137142,0.012783454917974316,0.01070603094529568
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2010,11076.5938541692,11786.497727719214,9813.571403543332
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2010,0.01302217801066717,0.013856279285064131,0.011558459147738119
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2011,11289.563440160653,12030.970206969327,10016.274379773296
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2011,0.013274077944469638,0.014123471407014641,0.011766903839943036
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2013,11798.603826911622,12570.776696154027,10430.692594336035
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2013,0.013381357933909259,0.014247427107984129,0.011819134921369608
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2012,1221.9087850246412,1312.4799380767984,1071.3092654519164
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2012,0.011392610072690266,0.012231946084848044,0.01002392096089288
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2008,10439.739649136367,11104.00999572915,9302.921955045998
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2008,0.012423859524776823,0.013224264895299405,0.01107676933620898
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2010,5336.480520053367,5706.636119662809,4638.451696511216
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2010,0.013967637156120602,0.014955396487210984,0.012112956487677077
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2014,1262.9589994028302,1363.1921207359192,1104.6288815480912
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2014,0.011842744638828178,0.01272250557278889,0.010335802047296163
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2005,764.3741828622527,795.1289383081584,715.4091578127327
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2005,0.007046254243684821,0.007323858118539217,0.006636489322913647
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2006,153.45615430756538,163.59446079002404,139.92488123010764
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2006,0.008411942646726688,0.008891440514592045,0.00768405743453745
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2008,432.0558750720652,458.76499853467215,377.6042893540727
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2008,0.010377130141289633,0.011014036963246378,0.0090493677949787
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2006,4686.81809269586,4987.270067867709,4150.779692103299
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2006,0.0124601906263707,0.013250750204096233,0.011040921605846809
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2009,441.28469021835986,469.3226480994794,383.56135485602005
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2009,0.010649821710614599,0.01131195463477579,0.009273251237822128
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2006,763.4607415159903,795.0378301412577,713.4013927784995
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2006,0.007251822758955157,0.007562016550922259,0.006794611442506257
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2016,1334.5018280896704,1441.3328923942536,1162.8913896395368
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2016,0.012256478983999598,0.013212840422876236,0.010637766204263193
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2008,771.2207057200276,806.366334388583,717.9348003244941
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2008,0.007295724256536952,0.007615249862241102,0.006815985257528812
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2012,11569.840154957968,12321.107429725622,10257.730676153946
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2012,0.013398288123519548,0.01426616922176175,0.011879427543201952
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2014,11895.778103625775,12696.950947668178,10424.199007928219
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2014,0.013484771279385547,0.01439070714570507,0.011834875129188321
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2009,174.00072801760876,185.62750756196814,157.1156961890192
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2009,0.009487096483713313,0.010057362261949525,0.008561666597983145
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2006,414.6699194508444,440.59074325328135,364.2385285830118
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2006,0.01003993809490259,0.010626306094799717,0.008817793672161043
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2011,1187.1141127925082,1273.235158457419,1038.1071999474357
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2011,0.0112993741895689,0.012107373181290383,0.009950547553270774
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2013,1251.632018090734,1346.063818128616,1097.9622495727976
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2013,0.011596958825531958,0.012435378600224398,0.01019440131263549
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2015,1303.0587626122422,1406.012582310129,1140.539687080506
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2015,0.011979954595232484,0.012876180757798035,0.01043960295797002
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2016,12338.038423916745,13190.242728532521,10791.115980356622
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2016,0.013302061711035937,0.014218338767117453,0.011629431214145235
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2008,5032.84094532877,5364.3227943392185,4406.085503632502
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2008,0.01312464250459316,0.013988798148489046,0.01148694595340479
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2012,195.22013791889623,208.68479675991574,174.84927672526675
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2012,0.010216890135036561,0.010839764207543227,0.009172856667949213
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2010,816.4642394258439,860.01845066471,756.9361100055345
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2010,0.007661933742237035,0.008046814422890913,0.007142056663345829
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2011,850.0957498615526,896.4682397863419,791.6212881204012
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2011,0.007911381002896066,0.008340321534716701,0.007329489063415548
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2007,156.47859067595047,167.33332382520274,143.17840631340528
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2007,0.008498981362783133,0.008971131508854693,0.0077628206491831536
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2018,12584.998860453717,13541.077633456442,10900.251435721622
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2018,0.01331815807853773,0.014311681039860042,0.011582615669394525
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2017,1351.3350743385504,1455.2416669130178,1179.8002134459941
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2017,0.012356577310531962,0.013328149169991185,0.010763410666957407
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2015,12107.190394438965,12903.696771336996,10625.640880457302
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2015,0.013298793784545878,0.014204604636790599,0.011686969053504507
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2019,12501.711423763856,13462.047980298297,10797.75458895719
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2019,0.013315230453356574,0.014340151953371738,0.011503795753221215
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2012,473.28490554068753,503.71279788740446,412.0992642050201
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2012,0.011373419071378245,0.012086776870912678,0.009909366920566884
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2017,12355.836080225572,13267.560631932158,10753.139180204298
+1,Muertes,81,Alemania,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2017,0.013251438615529144,0.0142156542663952,0.011570305284732896
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2012,5671.95255560733,6080.664612129813,4888.547226580829
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2012,0.014409255705431095,0.015469878805185968,0.01243209824991365
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2018,1381.472787148625,1485.8479556389173,1187.2509601534798
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2018,0.012543398869973597,0.01354880314488755,0.010866208931047694
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2019,1373.6229441837856,1483.3965087294475,1169.7744045233449
+1,Muertes,76,Bélgica,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2019,0.012498051882023634,0.01352728127987665,0.010727880517442005
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2014,5867.908533554264,6310.551228539061,5020.285195433197
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2014,0.014751860316711624,0.015887227817925734,0.012661300376796122
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2013,200.61285488747663,213.94385317477207,178.42826438927213
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2013,0.010516861088385572,0.011168052878118359,0.009412573651996537
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2012,887.5723595520813,936.876790038368,820.1848956288464
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2012,0.008225337142154027,0.008702962245719923,0.007585872629142564
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2014,934.0183918453654,987.5361133586276,856.9699410206644
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2014,0.008724941036434432,0.00922342337999152,0.008009017485082584
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2015,208.88705581033554,223.86659682235418,186.21415190139348
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2015,0.010718683269997746,0.011388618314590024,0.009591949893810998
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2011,188.49278638305466,201.90912628747583,168.31724606344315
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2011,0.01013571860944461,0.010755332437588928,0.009127067078945509
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2016,1009.9674482740293,1067.0104047201328,920.811677591425
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2016,0.009206283451542507,0.009735986631798846,0.008400376643254095
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2013,5732.562006141873,6163.697987782979,4916.373681081231
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2013,0.014622182858827775,0.01572323469276187,0.01258505797377917
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2013,498.332417409683,530.5435507094465,432.56898620013004
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2013,0.012033526627333176,0.01278537792908289,0.010504104510444662
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2011,5495.706032270531,5883.945905407721,4748.88819472453
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2011,0.014176468890624537,0.015200145084362786,0.012241015247818924
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2015,550.02684517182,587.4017473708986,477.4841137422824
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2015,0.013536981212742417,0.014408407902147017,0.011813730753605825
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2011,452.143976042984,482.3130400511811,394.37040858138914
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2011,0.010775601043975088,0.011451633555019991,0.00939735271590465
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2017,240.70040141988753,257.91040510232864,214.16023184899862
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2017,0.011860634094216364,0.012625597302297767,0.010575793394511824
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2015,6091.650197030208,6549.863870307315,5216.648626592684
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2015,0.014790760512618338,0.015942711905490417,0.012693185991665018
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2013,916.3181416270929,970.3019965131051,843.8188555055735
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2013,0.008458288846497937,0.008957636375593771,0.007773248721658298
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2014,523.1036302536394,558.6106125086965,454.5642986631746
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2014,0.012856584892327608,0.013670202991835972,0.011188265955942056
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2017,1049.2783264040888,1110.1425914677511,949.9033915462709
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2017,0.009451881493644036,0.009966561103190885,0.008602598487529664
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2018,1082.9573548732608,1144.3014738366694,982.1365030180326
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2018,0.00961873062895868,0.01013012840478737,0.008728411256968627
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2016,563.2654677917957,599.9477650766817,491.6802392828772
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2016,0.013759254088964548,0.014630904553006835,0.012021131552829259
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2014,197.000948091821,211.13211738690012,175.0399845625226
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2014,0.010685982497418835,0.011382370560156594,0.009517624756058165
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2019,1106.9038127848671,1172.6937660183341,1002.4338929764057
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2019,0.009794249454243347,0.010339024718769536,0.008872112511763968
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2017,571.7410721049679,609.6479382518486,497.48279980054645
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2017,0.014089386311547616,0.014979384505060846,0.012253797485826072
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2015,985.4530527648226,1040.4585562656932,901.2468624130789
+1,Muertes,47,República Checa,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2015,0.00901670386016347,0.009522308824386289,0.008249462739451478
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2016,218.01396465290537,233.12153361512392,193.39157219996866
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2016,0.011035866500174796,0.011741387946712308,0.009872765358424343
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2017,6307.188289428609,6821.888906367769,5380.015087428022
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2017,0.015043381930996712,0.016275790283001162,0.012809463401111302
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2016,6181.41301974575,6664.317360864386,5288.172650925375
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2016,0.014968463389603068,0.01616192714344703,0.012788575010182246
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2018,250.50676799468513,271.1738339217456,220.4843354210563
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2018,0.012292382615561327,0.013123265342648514,0.010902374953259039
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2018,583.8954199508125,621.757971720184,506.8072241956261
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2018,0.014314866913935418,0.015239859785851089,0.012429843561286099
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2018,6329.466711884676,6857.61609324785,5364.613041316768
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2018,0.01496789160037136,0.016206447628075688,0.012711357061194434
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2019,6249.334313515455,6779.010109811574,5295.067842111315
+1,Muertes,92,España,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2019,0.014881286137714979,0.016127713092592446,0.012638923330506334
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2019,251.75215302021277,273.0569767713428,220.72834416608057
+1,Muertes,55,Eslovenia,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2019,0.012317055479220105,0.013155457294557001,0.010851184718441568
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,1,Número,2019,604.6251957254613,646.1417891100344,523.0718190273735
+1,Muertes,90,Noruega,3,Ambos,22,Todas las edades,544,Enfermedad de Parkinson,2,Porcentaje,2019,0.01487791465627023,0.015853645643984116,0.012891539124011843

@@ -1,0 +1,34 @@
+country,year,metal,matrix,unit,population,n,source,percentile,value,numero_muertes
+Belgium,2005,Pb,Blood Whole Blood,µg/L,POPULATION,1579,https://ipchem.jrc.ec.europa.eu/RDSIdiscovery/ipchem/index.html#showmetadata/FLEHS1REFADULT,P50,39.18,1002.0005299749904
+Belgium,2009,Pb,Blood Whole Blood,µg/L,POPULATION,243,https://ipchem.jrc.ec.europa.eu/RDSIdiscovery/ipchem/index.html#showmetadata/FLEHS2REFNB,P50,10.941,1138.05573328487
+Czech Republic,2005,Hg,Blood Whole Blood,µg/L,POPULATION,405,https://ipchem.jrc.ec.europa.eu/RDSIdiscovery/ipchem/index.html#showmetadata/CZECHHBMAE2005,P50,0.99,764.3741828622527
+Czech Republic,2005,Pb,Blood Whole Blood,µg/L,POPULATION,405,https://ipchem.jrc.ec.europa.eu/RDSIdiscovery/ipchem/index.html#showmetadata/CZECHHBMAE2005,P50,30.3,764.3741828622527
+Czech Republic,2007,Hg,Blood Whole Blood,µg/L,POPULATION,411,https://ipchem.jrc.ec.europa.eu/RDSIdiscovery/ipchem/index.html#showmetadata/CZECHHBMAE2007,P50,0.86,752.6065406330002
+Czech Republic,2007,Pb,Blood Whole Blood,µg/L,POPULATION,410,https://ipchem.jrc.ec.europa.eu/RDSIdiscovery/ipchem/index.html#showmetadata/CZECHHBMAE2007,P50,28.95,752.6065406330002
+Czech Republic,2009,Hg,Blood Whole Blood,µg/L,POPULATION,405,https://ipchem.jrc.ec.europa.eu/index.html#showmetadata/CZECHHBMAE2009,P50,0.66,791.6098589923901
+Czech Republic,2009,Pb,Blood Whole Blood,µg/L,POPULATION,405,https://ipchem.jrc.ec.europa.eu/index.html#showmetadata/CZECHHBMAE2009,P50,19.9,791.6098589923901
+Czech Republic,2015,Hg,Blood Whole Blood,µg/L,POPULATION,302,https://ipchem.jrc.ec.europa.eu/index.html#showmetadata/CZECHHBMAE2015,P50,0.645,985.4530527648226
+Czech Republic,2015,Pb,Blood Whole Blood,µg/L,POPULATION,302,https://ipchem.jrc.ec.europa.eu/index.html#showmetadata/CZECHHBMAE2015,P50,16.4406,985.4530527648226
+Germany,2007,Hg,Blood Whole Blood,µg/L,POPULATION,430,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,0.855,9958.667879945351
+Germany,2007,Pb,Blood Whole Blood,µg/L,POPULATION,427,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,14.094,9958.667879945351
+Germany,2008,Hg,Blood Whole Blood,µg/L,POPULATION,453,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,0.809,10439.739649136369
+Germany,2008,Pb,Blood Whole Blood,µg/L,POPULATION,448,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,13.7535,10439.739649136369
+Germany,2009,Hg,Blood Whole Blood,µg/L,POPULATION,424,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,0.824,10825.93218060174
+Germany,2009,Pb,Blood Whole Blood,µg/L,POPULATION,422,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,12.4706,10825.93218060174
+Germany,2010,Hg,Blood Whole Blood,µg/L,POPULATION,457,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,0.775,11076.5938541692
+Germany,2010,Pb,Blood Whole Blood,µg/L,POPULATION,454,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,11.37,11076.5938541692
+Germany,2011,Pb,Blood Whole Blood,µg/L,POPULATION,477,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,12.23,11289.563440160651
+Germany,2012,Pb,Blood Whole Blood,µg/L,POPULATION,491,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,11.98,11569.840154957968
+Germany,2013,Pb,Blood Whole Blood,µg/L,POPULATION,491,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,11.7,11798.603826911622
+Germany,2014,Pb,Blood Whole Blood,µg/L,POPULATION,495,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,10.87,11895.778103625777
+Germany,2015,Pb,Blood Whole Blood,µg/L,POPULATION,491,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,12,12107.190394438963
+Germany,2016,Pb,Blood Whole Blood,µg/L,POPULATION,504,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,10.605,12338.038423916743
+Germany,2017,Pb,Blood Whole Blood,µg/L,POPULATION,508,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,10.895,12355.836080225572
+Germany,2018,Pb,Blood Whole Blood,µg/L,POPULATION,515,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,11.16,12584.998860453716
+Germany,2019,Pb,Blood Whole Blood,µg/L,POPULATION,510,https://ipchem.jrc.ec.europa.eu/#showmetadata/ESB,P50,9.935,12501.711423763856
+Norway,2008,Hg,Blood Whole Blood,µg/L,POPULATION,2962,https://ipchem.jrc.ec.europa.eu/RDSIdiscovery/ipchem/index.html#showmetadata/MOBA,P50,1.025,432.0558750720652
+Norway,2008,Pb,Blood Whole Blood,µg/L,POPULATION,2963,https://ipchem.jrc.ec.europa.eu/RDSIdiscovery/ipchem/index.html#showmetadata/MOBA,P50,8.2064,432.0558750720652
+Slovenia,2014,Hg,Blood Whole Blood,µg/L,POPULATION,1083,https://ipchem.jrc.ec.europa.eu/RDSIdiscovery/ipchem/index.html#showmetadata/SLOHBM,P50,1.199,197.000948091821
+Slovenia,2014,Pb,Blood Whole Blood,µg/L,POPULATION,1084,https://ipchem.jrc.ec.europa.eu/RDSIdiscovery/ipchem/index.html#showmetadata/SLOHBM,P50,17.4806,197.000948091821
+Spain,2010,Hg,Blood Serum,µg/L,POPULATION,1880,https://ipchem.jrc.ec.europa.eu/RDSIdiscovery/ipchem/index.html#showmetadata/BIOAMBIENTES,P50,6.525,5336.480520053367
+Spain,2010,Pb,Blood Whole Blood,µg/L,POPULATION,1880,https://ipchem.jrc.ec.europa.eu/RDSIdiscovery/ipchem/index.html#showmetadata/BIOAMBIENTES,P50,22.5,5336.480520053367
