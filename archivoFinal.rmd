@@ -1,6 +1,214 @@
 ---
 title: "Exposición a Plomo y Mercurio y Riesgo Genético en Alzheimer y Parkinson"
-author: "Rubén Moreno Ortega, Adrián Orive Rodriguez, Álvaro Carbonell Pastor"
-output: HTML_document
-date: sys.Date
+author: "Rubén Moreno Ortega, Adrián Orive Rodríguez, Álvaro Carbonell Pastor"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    theme: flatly
+    toc: true
+    toc_float: true
+    code_folding: hide
 ---
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+library(tidyverse)
+library(ggrepel)
+library(broom)
+library(ggplot2)
+library(ggrepel)
+```
+# Introducción
+En este informe, exploramos la relación entre la exposición a metales pesados, específicamente plomo y mercurio, y el riesgo genético asociado con enfermedades neurodegenerativas como el Alzheimer y el Parkinson. Utilizando datos de biomonitorización y estadísticas de mortalidad, analizamos cómo estos factores pueden influir en la incidencia de estas enfermedades en diferentes países.
+
+# Metodología
+La metodología seguida en este estudio incluye la recopilación y filtrado de datos relevantes, la integración de diferentes fuentes de información y el análisis estadístico para identificar posibles correlaciones entre la exposición a metales pesados y su incidencia en las enfermedades del Alzheimer y Parkinson.
+
+```{r load-data, echo=FALSE}
+df <- read_csv("results/muertesAlzheimer_HgPb.csv", show_col_types = FALSE)
+df2 <- read_csv("results/muertesParkinson_HgPb.csv", show_col_types = FALSE)
+```
+
+# Mortalidad por Alzheimer y su relacion con los niveles de plomo y mercurio
+Esta pregunta resume un análisis exploratorio sobre la relación entre las concentraciones poblacionales de mercurio (Hg) y plomo (Pb) en sangre (percentil P50) y el número estimado de muertes por Alzheimer por país y año.
+
+Nota importante: la variable `numero_muertes` no es un conteo exacto sino una estimación (por eso tiene decimales). El valor original suele disponer de un intervalo (límite inferior y superior); aquí trabajamos con la media.
+
+
+
+## ¿El nivel del metal predice el número de muertes?
+
+Vamos a ver esto mediante un gráfico de dispersión con línea de regresión, separado en dos gráficos (uno para Hg y otro para Pb). Cada gráfico mostrará el número de muertes en el eje Y y el nivel del metal en el eje X.
+```{r plot-correlaciones, echo=FALSE, fig.width=10}
+# 1. Separar los datos
+df_pb <- filter(df, metal == "Pb")
+df_hg <- filter(df, metal == "Hg")
+
+# 2. Gráfico para Plomo (Pb)
+plot_pb <- ggplot(df_pb, aes(x = value, y = numero_muertes)) +
+  geom_point(aes(color = country), size = 3) +
+  geom_smooth(method = "lm", color = "black", se = FALSE) +
+  geom_text_repel(aes(label = paste(country, year, sep = "-")), size = 2.5) +
+  labs(
+    title = "Correlación entre Plomo (Pb P50) y Muertes por Alzheimer",
+    y = "Número Estimado de Muertes",
+    x = "Nivel de Plomo (P50) en µg/L"
+  ) +
+  theme_bw()
+
+# 3. Gráfico para Mercurio (Hg)
+plot_hg <- ggplot(df_hg, aes(x = value, y = numero_muertes)) +
+  geom_point(aes(color = country), size = 3) +
+  geom_smooth(method = "lm", color = "black", se = FALSE) +
+  geom_text_repel(aes(label = paste(country, year, sep = "-")), size = 2.5) +
+  labs(
+    title = "Correlación entre Mercurio (Hg P50) y Muertes por Alzheimer",
+    y = "Número Estimado de Muertes",
+    x = "Nivel de Mercurio (P50) en µg/L"
+  ) +
+  theme_bw()
+
+# 4. Imprimimos los gráficos
+plot_pb
+plot_hg
+```
+
+### Gráfico 1: Correlación entre Plomo (Pb P50) y Muertes por Parkinson
+
+Si nos fijamos en la línea de regresión (línea negra), podemos ver una **tendencia negativa**. A medida que aumentan los niveles de plomo, las muertes por Alzheimer parecen disminuir.
+
+* **Alemania** muestra la mayor cantidad de muertes, pero con niveles bajos de plomo.
+* Por el contrario, **Bélgica (2005)** y la **República Checa** presentan niveles más altos de plomo, pero un número de muertes comparativamente bajo.
+
+**Conclusión:** Los datos parecen indicar una **correlación negativa** entre los niveles de plomo y las muertes por Alzheimer. Esto **resulta contradictorio desde un punto de vista biológico**, por lo que podemos deducir que hay otros factores (factores de confusión), los cuales no tenemos en cuenta en nuestro estudio, que están afectando de manera mucho más significativa al resultado.
+
+### Gráfico 2: Correlación entre Mercurio (Hg P50) y Muertes por Alzheimer
+
+En este caso, la línea de regresión negra muestra una **ligera pendiente positiva**. Sin embargo, los puntos se encuentran muy dispersos y no siguen un patrón claro.
+
+* **Alemania** nuevamente muestra la mayor cantidad de muertes, pero con niveles moderados de mercurio.
+* **España** presenta los niveles más altos de mercurio del conjunto de datos, pero con un número de muertes inferior al de Alemania.
+
+**Conclusión:** Los datos parecen indicar que **no hay una relación clara** o estadísticamente significativa entre el número de muertes por Alzheimer y los niveles de mercurio reportados.
+
+
+## ANALISIS NUMERICO
+
+```{r}
+# 1. Separar los datos
+df_pb <- filter(df, metal == "Pb")
+df_hg <- filter(df, metal == "Hg")
+
+# 2. Correr los modelos lineales
+modelo_pb <- lm(numero_muertes ~ value, data = df_pb)
+modelo_hg <- lm(numero_muertes ~ value, data = df_hg)
+
+# 3. Presentar los resultados en una tabla limpia
+tabla_pb <- tidy(modelo_pb)
+tabla_hg <- tidy(modelo_hg)
+
+# Usamos kable() para tablas bonitas en R Markdown
+knitr::kable(tabla_pb, digits = 3, caption = "Modelo Lineal: Muertes por Alzheimer ~ Nivel de Plomo (Pb)")
+
+knitr::kable(tabla_hg, digits = 3, caption = "Modelo Lineal: Muertes por Alzheimer ~ Nivel de Mercurio (Hg)")
+```
+### Modelo 1: Muertes por Alzheimer ~ Nivel de Plomo (Pb)
+El modelo muestra que el intercepto (74260.043) representa el número estimado de muertes por Alzheimer cuando el nivel de plomo es cero. El coeficiente del plomo (-2231.546) indica que, por cada unidad adicional de este metal, las muertes por Alzheimer disminuyen en promedio 2231.5 unidades. Dado que el p-valor (0.002) es menor a 0.05, la relación resulta estadísticamente significativa. Sin embargo, el signo negativo del coeficiente refleja una relación inversa, lo cual es contraintuitivo desde un punto de vista biológico.
+
+### Modelo 2: Muertes por Alzheimer ~ Nivel de Mercurio (Hg)
+El modelo indica que el intercepto (23311.106) representa el número estimado de muertes por Alzheimer cuando el nivel de mercurio es cero. El coeficiente del mercurio (334.402) sugiere un leve aumento en las muertes por Alzheimer con mayores niveles de este metal; sin embargo, el p-valor (0.947) muestra que la relación no es estadísticamente significativa. Por tanto, no se puede afirmar que el mercurio tenga un efecto real sobre las muertes por Alzheimer en esta muestra. 
+
+Ambos analisis concuerdan con lo visto en los graficos anteriores. 
+
+# Mortalidad por Parkinson y su relacion con los niveles de plomo y mercurio
+Esta pregunta resume un análisis exploratorio sobre la relación entre las concentraciones poblacionales de mercurio (Hg) y plomo (Pb) en sangre (percentil P50) y el número estimado de muertes por Alzheimer por país y año.
+
+Nota importante: la variable `numero_muertes` no es un conteo exacto sino una estimación (por eso tiene decimales). El valor original suele disponer de un intervalo (límite inferior y superior); aquí trabajamos con la media.
+
+## ¿El nivel del metal predice el número de muertes?
+
+Vamos a ver esto mediante un gráfico de dispersión con línea de regresión, separado en dos gráficos (uno para Hg y otro para Pb). Cada gráfico mostrará el número de muertes en el eje Y y el nivel del metal en el eje X.
+```{r plot-correlaciones2, echo=FALSE, fig.width=10}
+# 1. Separar los datos
+df_pb2 <- filter(df2, metal == "Pb")
+df_hg2 <- filter(df2, metal == "Hg")
+
+# 2. Gráfico para Plomo (Pb)
+plot_pb2 <- ggplot(df_pb2, aes(x = value, y = numero_muertes)) +
+  geom_point(aes(color = country), size = 3) +
+  geom_smooth(method = "lm", color = "black", se = FALSE) +
+  geom_text_repel(aes(label = paste(country, year, sep = "-")), size = 2.5) +
+  labs(
+    title = "Correlación entre Plomo (Pb P50) y Muertes por Parkinson",
+    y = "Número Estimado de Muertes",
+    x = "Nivel de Plomo (P50) en µg/L"
+  ) +
+  theme_bw()
+
+# 3. Gráfico para Mercurio (Hg)
+plot_hg2 <- ggplot(df_hg2, aes(x = value, y = numero_muertes)) +
+  geom_point(aes(color = country), size = 3) +
+  geom_smooth(method = "lm", color = "black", se = FALSE) +
+  geom_text_repel(aes(label = paste(country, year, sep = "-")), size = 2.5) +
+  labs(
+    title = "Correlación entre Mercurio (Hg P50) y Muertes por Parkinson",
+    y = "Número Estimado de Muertes",
+    x = "Nivel de Mercurio (P50) en µg/L"
+  ) +
+  theme_bw()
+
+# 4. Imprimimos los gráficos
+plot_pb2
+plot_hg2
+```
+
+### Gráfico 1: Correlación entre Plomo (Pb P50) y Muertes por Parkinson
+
+Si nos fijamos en la línea de regresión (línea negra), podemos ver una **tendencia negativa**. A medida que aumentan los niveles de plomo, las muertes por Parkinson parecen disminuir.
+
+* **Alemania** muestra la mayor cantidad de muertes, pero con niveles bajos de plomo.
+* Por el contrario, **Bélgica (2005)** y la **República Checa** presentan niveles más altos de plomo, pero un número de muertes comparativamente bajo.
+
+**Conclusión:** Los datos parecen indicar una **correlación negativa** entre los niveles de plomo y las muertes por Parkinson. Esto **resulta contradictorio desde un punto de vista biológico**, por lo que podemos deducir que hay otros factores (factores de confusión), los cuales no tenemos en cuenta en nuestro estudio, que están afectando de manera mucho más significativa al resultado.
+
+### Gráfico 2: Correlación entre Mercurio (Hg P50) y Muertes por Parkinson
+
+En este caso, la línea de regresión negra muestra una **ligera pendiente positiva**. Sin embargo, los puntos se encuentran muy dispersos y no siguen un patrón claro.
+
+* **Alemania** nuevamente muestra la mayor cantidad de muertes, pero con niveles moderados de mercurio.
+* **España** presenta los niveles más altos de mercurio del conjunto de datos, pero con un número de muertes inferior al de Alemania.
+
+**Conclusión:** Los datos parecen indicar que **no hay una relación clara** o estadísticamente significativa entre el número de muertes por Parkinson y los niveles de mercurio reportados.
+
+
+## ANALISIS NUMERICO
+
+```{r}
+# 1. Separar los datos
+df_pb2 <- filter(df2, metal == "Pb")
+df_hg2 <- filter(df2, metal == "Hg")
+
+# 2. Correr los modelos lineales
+modelo_pb2 <- lm(numero_muertes ~ value, data = df_pb2)
+modelo_hg2 <- lm(numero_muertes ~ value, data = df_hg2)
+
+# 3. Presentar los resultados en una tabla limpia
+tabla_pb2 <- tidy(modelo_pb2)
+tabla_hg2 <- tidy(modelo_hg2)
+
+# Usamos kable() para tablas bonitas en R Markdown
+knitr::kable(tabla_pb2, digits = 3, caption = "Modelo Lineal: Muertes por Parkinson ~ Nivel de Plomo (Pb)")
+
+knitr::kable(tabla_hg2, digits = 3, caption = "Modelo Lineal: Muertes por Parkinson ~ Nivel de Mercurio (Hg)")
+```
+### Modelo 1: Muertes por Parkinson ~ Nivel de Plomo (Pb)
+El modelo muestra que el intercepto (13868.262) representa el número estimado de muertes por Parkinson cuando el nivel de plomo es cero. El coeficiente del plomo (-412.033) indica que, por cada unidad adicional de este metal, las muertes por Parkinson disminuyen en promedio 412.033 unidades. Dado que el p-valor (0.003) es menor a 0.05, la relación resulta estadísticamente significativa. Sin embargo, el signo negativo del coeficiente refleja una relación inversa, lo cual es contraintuitivo desde un punto de vista biológico.
+
+### Modelo 2: Muertes por Parkinson ~ Nivel de Mercurio (Hg)
+El modelo indica que el intercepto (4620.02) representa el número estimado de muertes por Parkinson cuando el nivel de mercurio es cero. El coeficiente del mercurio (48.81) sugiere un leve aumento en las muertes por Parkinson con mayores niveles de este metal; sin embargo, el p-valor (0.960) muestra que la relación no es estadísticamente significativa. Por tanto, no se puede afirmar que el mercurio tenga un efecto real sobre las muertes por Parkinson en esta muestra.
+
+Ambos analisis concuerdan con lo visto en los graficos anteriores. 
+
+## CONCLUSION
+Al comparar los análisis de ambas enfermedades neurodegenerativas, emerge un patrón consistente. En ambos casos, los niveles de mercurio (Hg) no muestran una relación estadísticamente significativa con la mortalidad. Por otro lado, el plomo (Pb) presenta para ambas patologías una correlación negativa y estadísticamente significativa (p-valores de 0.002 y 0.003, respectivamente).
+
+El hecho de que a mas plomo haya menos muertes es biológicamente contraintuitivo, y el hecho de que se repita de forma idéntica tanto en el Alzheimer como en el Parkinson, refuerza la hipótesis de que no estamos ante una relación causal. Lo mas probable que estemos observando el efecto de uno o más factores de confusión. Por ejemplo, es normal que los países con mayor esperanza de vida y mejores sistemas de diagnóstico (como Alemania) reporten, más muertes por estas enfermedades, mientras que, poseen regulaciones ambientales más estrictas que resultan en niveles de plomo más bajos. Esta correlación nos indica la necesidad de incluir más variables.
