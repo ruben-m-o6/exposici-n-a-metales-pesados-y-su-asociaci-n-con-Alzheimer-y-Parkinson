@@ -1,0 +1,48 @@
+/* =====================================================
+  CÓDIGO CSS PARA FONDO DE PÁGINA Y PANEL FLOTANTE
+=====================================================
+*/
+
+/* --- 1. EL FONDO (BODY) --- */
+/* Esto aplica a toda la página */
+body {
+    /* ¡¡IMPORTANTE!! Cambia 'fondo-pagina.png' 
+       al nombre de tu archivo de imagen */
+    background-image: url('FONDOFUENTES.png'); 
+    
+    /* La imagen cubre toda la pantalla */
+    background-size: cover;
+    
+    /* La imagen no se mueve al hacer scroll */
+    background-attachment: fixed;
+    
+    /* La imagen se centra en la pantalla */
+    background-position: center center;
+}
+
+
+/* --- 2. EL PANEL DE CONTENIDO (LEER BIEN) --- */
+/* Esto aplica al contenedor principal donde va tu texto.
+   Lo hacemos blanco y semi-transparente para que
+   el texto se pueda leer perfectamente.
+*/
+.container-fluid {
+    /* Fondo blanco con 97% de opacidad.
+      (Puedes jugar con 0.97, 0.95, etc. si quieres más transparencia) 
+    */
+    background-color: rgba(255, 255, 255, 0.97); 
+    
+    /* Bordes redondeados para el panel */
+    border-radius: 8px;
+    
+    /* Márgenes para que el panel se separe de los bordes */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+    /* Espacio interno para que el texto no toque los bordes */
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+    /* Una sombra suave para darle un efecto "flotante" */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+}
