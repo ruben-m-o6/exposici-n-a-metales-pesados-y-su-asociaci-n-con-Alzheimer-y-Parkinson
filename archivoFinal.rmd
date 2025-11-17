@@ -1,27 +1,89 @@
 ---
-title: "Exposición a Plomo y Mercurio y Riesgo Genético en Alzheimer y Parkinson"
-author: "Rubén Moreno Ortega, Adrián Orive Rodríguez, Álvaro Carbonell Pastor"
-date: "`r Sys.Date()`"
-output: 
+title: "**Exposición a Plomo y Mercurio y Riesgo Genético en Alzheimer y Parkinson**"
+subtitle: "Un análisis integrador de neurotoxicidad ambiental y susceptibilidad genética"
+author: >
+  **Rubén Moreno Ortega**  
+  **Adrián Orive Rodríguez**  
+  **Álvaro Carbonell Pastor**
+date: "`r format(Sys.Date(), '%d de %B de %Y')`"
+output:
   html_document:
     theme: flatly
     toc: true
     toc_float: true
-    code_folding: hide
+    toc_depth: 3
+    code_folding: show
+    number_sections: true
+    fig_caption: true
+    df_print: paged
+    syntax_highlighting: pygments
+    css: STYLE.css
 ---
+
 ```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+#carga de todas las librerias necesarias
 knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(tidyverse)
 library(ggrepel)
 library(broom)
 library(ggplot2)
 library(ggrepel)
+library(rnaturalearth)
+library(rnaturalearthdata)
+library(sf)
+library(ggplot2)
+library(dplyr)
+library(plotly)
+library(kableExtra)
 ```
 # Introducción
-En este informe, exploramos la relación entre la exposición a metales pesados, específicamente plomo y mercurio, y el riesgo genético asociado con enfermedades neurodegenerativas como el Alzheimer y el Parkinson. Utilizando datos de biomonitorización y estadísticas de mortalidad, analizamos cómo estos factores pueden influir en la incidencia de estas enfermedades en diferentes países.
+La prevalencia global de patologías neurodegenerativas como **Alzheimer** y **Parkinson** representa uno de los principales retos en biomedicina contemporánea. Diversos estudios epidemiológicos y moleculares han demostrado que ambos trastornos tienen una etiología multifactorial, en la que interactúan componentes genéticos, epigenéticos y ambientales.
+
+## Genética y metales pesados como factores de riesgo
+
+Desde los primeros GWAS se han identificado variantes genéticas de riesgo para el alzheimer y para parkinson. Estas variantes no solo modulan la susceptibilidad, sino también la progresión, la edad de inicio y las manifestaciones clínicas de la enfermedad. Sin embargo, la penetrancia de estos alelos es incompleta, lo que sugiere la intervención de factores externos.
+
+Entre los factores ambientales, la exposición crónica a metales pesados como plomo (Pb) y mercurio (Hg) ha cobrado relevancia. Estos elementos participan en mecanismos reconocidos de neurotoxicidad: estrés oxidativo, disfunción mitocondrial, agregación proteica y alteración de los sistemas de reparación celular.
+
 
 # Metodología
+En este informe, exploramos la relación entre la exposición a metales pesados, específicamente plomo y mercurio, y el riesgo genético asociado con enfermedades neurodegenerativas como el Alzheimer y el Parkinson. Utilizando datos de biomonitorización y estadísticas de mortalidad, analizamos cómo estos factores pueden influir en la incidencia de estas enfermedades en diferentes países.
+
 La metodología seguida en este estudio incluye la recopilación y filtrado de datos relevantes, la integración de diferentes fuentes de información y el análisis estadístico para identificar posibles correlaciones entre la exposición a metales pesados y su incidencia en las enfermedades del Alzheimer y Parkinson.
+
+## Mapa de los países del estudio
+```{r mapa-europa, message=FALSE, warning=FALSE}
+# Descargar datos de Europa
+# (Usamos scale = "large" para mejor definición de las costas)
+europa <- ne_countries(continent = "Europe", scale = "medium", returnclass = "sf")
+
+# Los países a marcar
+# Nota: Cambiado "Czech Republic" a "Czechia" que es más común en los datos
+paises_estudio <- c("Germany", "Spain", "Belgium", "Czechia", "Norway", "Slovenia")
+
+# Añadir columna para destacar países
+europa <- europa %>%
+  mutate(Estudio = ifelse(name %in% paises_estudio, "Estudio", "Otros"))
+
+# --- Graficar con la proyección corregida ---
+ggplot(europa) +
+  geom_sf(aes(fill = Estudio), color = "gray30", linewidth = 0.2) +
+  scale_fill_manual(values = c("Estudio" = "#ED7D31", "Otros" = "lightgray")) +
+  
+  # --- ESTA ES LA PARTE CLAVE ---
+  # Define una proyección (CRS) centrada en Europa (EPSG:3035)
+  # y establece límites para "hacer zoom" y recortar las partes lejanas.
+  coord_sf(
+    crs = st_crs(3035),
+    xlim = c(2500000, 6000000),
+    ylim = c(1500000, 5500000)
+  ) +
+  # ------------------------------
+  
+  labs(title = "Países del estudio sobre metales y genética en Europa",
+       fill = "Participación") +
+  theme_void()
+```
 
 ```{r load-data, echo=FALSE}
 df <- read_csv("results/muertesAlzheimer_HgPb.csv", show_col_types = FALSE)
@@ -44,10 +106,12 @@ df_pb <- filter(df, metal == "Pb")
 df_hg <- filter(df, metal == "Hg")
 
 # 2. Gráfico para Plomo (Pb)
-plot_pb <- ggplot(df_pb, aes(x = value, y = numero_muertes)) +
+plot_pb <- ggplot(df_pb, aes(x = value, y = numero_muertes, 
+                           label = country, year = year)) + # Añadimos info para el tooltip
   geom_point(aes(color = country), size = 3) +
   geom_smooth(method = "lm", color = "black", se = FALSE) +
-  geom_text_repel(aes(label = paste(country, year, sep = "-")), size = 2.5) +
+  # ggrepel es genial para estático, pero lo quitamos para plotly
+  # geom_text_repel(aes(label = paste(country, year, sep = "-")), size = 2.5) +
   labs(
     title = "Correlación entre Plomo (Pb P50) y Muertes por Alzheimer",
     y = "Número Estimado de Muertes",
@@ -56,10 +120,11 @@ plot_pb <- ggplot(df_pb, aes(x = value, y = numero_muertes)) +
   theme_bw()
 
 # 3. Gráfico para Mercurio (Hg)
-plot_hg <- ggplot(df_hg, aes(x = value, y = numero_muertes)) +
+plot_hg <- ggplot(df_hg, aes(x = value, y = numero_muertes,
+                           label = country, year = year)) + # Añadimos info para el tooltip
   geom_point(aes(color = country), size = 3) +
   geom_smooth(method = "lm", color = "black", se = FALSE) +
-  geom_text_repel(aes(label = paste(country, year, sep = "-")), size = 2.5) +
+  # geom_text_repel(aes(label = paste(country, year, sep = "-")), size = 2.5) +
   labs(
     title = "Correlación entre Mercurio (Hg P50) y Muertes por Alzheimer",
     y = "Número Estimado de Muertes",
@@ -67,9 +132,10 @@ plot_hg <- ggplot(df_hg, aes(x = value, y = numero_muertes)) +
   ) +
   theme_bw()
 
-# 4. Imprimimos los gráficos
-plot_pb
-plot_hg
+# 4. Imprimimos los gráficos con plotly (¡pasa el ratón por encima!)
+# ggplotly los convierte en interactivos
+ggplotly(plot_pb)
+ggplotly(plot_hg)
 ```
 
 ### Gráfico 1: Correlación entre Plomo (Pb P50) y Muertes por Parkinson
@@ -120,7 +186,7 @@ El modelo indica que el intercepto (23311.106) representa el número estimado de
 Ambos analisis concuerdan con lo visto en los graficos anteriores. 
 
 # Mortalidad por Parkinson y su relacion con los niveles de plomo y mercurio
-Esta pregunta resume un análisis exploratorio sobre la relación entre las concentraciones poblacionales de mercurio (Hg) y plomo (Pb) en sangre (percentil P50) y el número estimado de muertes por Alzheimer por país y año.
+Esta pregunta resume un análisis exploratorio sobre la relación entre las concentraciones poblacionales de mercurio (Hg) y plomo (Pb) en sangre (percentil P50) y el número estimado de muertes por Parkinson por país y año.
 
 Nota importante: la variable `numero_muertes` no es un conteo exacto sino una estimación (por eso tiene decimales). El valor original suele disponer de un intervalo (límite inferior y superior); aquí trabajamos con la media.
 
@@ -133,10 +199,10 @@ df_pb2 <- filter(df2, metal == "Pb")
 df_hg2 <- filter(df2, metal == "Hg")
 
 # 2. Gráfico para Plomo (Pb)
-plot_pb2 <- ggplot(df_pb2, aes(x = value, y = numero_muertes)) +
+plot_pb2 <- ggplot(df_pb2, aes(x = value, y = numero_muertes,
+                             label = country, year = year)) + # Info para tooltip
   geom_point(aes(color = country), size = 3) +
   geom_smooth(method = "lm", color = "black", se = FALSE) +
-  geom_text_repel(aes(label = paste(country, year, sep = "-")), size = 2.5) +
   labs(
     title = "Correlación entre Plomo (Pb P50) y Muertes por Parkinson",
     y = "Número Estimado de Muertes",
@@ -145,10 +211,10 @@ plot_pb2 <- ggplot(df_pb2, aes(x = value, y = numero_muertes)) +
   theme_bw()
 
 # 3. Gráfico para Mercurio (Hg)
-plot_hg2 <- ggplot(df_hg2, aes(x = value, y = numero_muertes)) +
+plot_hg2 <- ggplot(df_hg2, aes(x = value, y = numero_muertes,
+                             label = country, year = year)) + # Info para tooltip
   geom_point(aes(color = country), size = 3) +
   geom_smooth(method = "lm", color = "black", se = FALSE) +
-  geom_text_repel(aes(label = paste(country, year, sep = "-")), size = 2.5) +
   labs(
     title = "Correlación entre Mercurio (Hg P50) y Muertes por Parkinson",
     y = "Número Estimado de Muertes",
@@ -156,9 +222,9 @@ plot_hg2 <- ggplot(df_hg2, aes(x = value, y = numero_muertes)) +
   ) +
   theme_bw()
 
-# 4. Imprimimos los gráficos
-plot_pb2
-plot_hg2
+# 4. Imprimimos los gráficos con plotly
+ggplotly(plot_pb2)
+ggplotly(plot_hg2)
 ```
 
 ### Gráfico 1: Correlación entre Plomo (Pb P50) y Muertes por Parkinson
