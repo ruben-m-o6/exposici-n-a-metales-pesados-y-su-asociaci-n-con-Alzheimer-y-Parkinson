@@ -35,6 +35,8 @@ library(ggplot2)
 library(dplyr)
 library(plotly)
 library(kableExtra)
+library(VennDiagram)
+library(grid)
 ```
 # Introducción
 La prevalencia global de patologías neurodegenerativas como **Alzheimer** y **Parkinson** representa uno de los principales retos en biomedicina contemporánea. Diversos estudios epidemiológicos y moleculares han demostrado que ambos trastornos tienen una etiología multifactorial, en la que interactúan componentes genéticos, epigenéticos y ambientales.
@@ -322,6 +324,92 @@ El gráfico de evolución temporal conjunta del Mercurio y la mortalidad por Alz
 
 Dado que la exposición al Mercurio es estable y las muertes por Alzheimer aumentan, no se produce el fenómeno de las "tendencias opuestas" que generó el sesgo en el caso del plomo. En consecuencia, el análisis temporal corrobora la conclusión inicial: no existe una correlación clara ni estadísticamente significativa entre los niveles de Mercurio y los cambios en la mortalidad por Alzheimer en esta muestra agregada. El Hg no actúa como un impulsor de la correlación espuria, sino que simplemente demuestra la ausencia de una relación detectable a este nivel de análisis.
 
+## ¿Qué genes interactúan con Hg/Pb y cuántos de ellos coinciden con los genes con asociación en GWAS?
+Una de las áreas clave dentro de la investigación de enfermedades como el Alzheimer y el Parkinson es la interacciçon entre el ambiente y la genética. Ya sabemos que Plomo y Mercurio son neurotóxicos reconocidos, saber si los genes que se conoce que interactuan con estos metales coinciden con los genes implicados en estas enfermedades por los estudios GWAS (genes cuya variación aumenta el riesgo).
+
+Primeramente, vamos a identificar los genes que interactúan con el Plomo y con el Mercurio y a su vez los vamos a extraer y unificar estos genes que interactuan con los metales, según si estan asociados con genes en estudios GWAS
+
+```{r genes-interactuan-metales, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}  
+limpiar_genes <- function(df) {
+  df %>%
+    separate_rows(mappedGenes, sep = ',') %>%
+    mutate(mappedGenes = str_trim(mappedGenes)) %>%
+    filter(!str_detect(mappedGenes, regex("NR|NA|-|^$|nan", ignore_case = TRUE))) %>%
+    pull(mappedGenes) %>%
+    unique()
+}
+
+df_metales <- read_csv("input/metales_pesados.csv")
+df_alzheimer <- read_csv("input/genesAlzheimerFiltrado.csv")
+
+
+keywords_metales <- c('lead', 'Pb', 'mercury', 'mercuric', 'Hg', 'plomo', 'mercurio')
+set_metales_pbhg <- df_metales %>%
+  
+  filter(str_detect(ChemicalName, regex(paste(keywords_metales, collapse = '|'), ignore_case = TRUE))) %>%
+  
+  pull(GeneSymbol) %>%
+  
+  unique() %>%
+  na.omit() %>%
+  as.character()
+
+
+set_alzheimer_gwas <- limpiar_genes(df_alzheimer)
+
+# Calcular tamaños para cada sección
+interseccion_size <- length(intersect(set_metales_pbhg, set_alzheimer_gwas))
+solo_pbhg_size <- length(set_metales_pbhg) - interseccion_size
+solo_alzheimer_size <- length(set_alzheimer_gwas) - interseccion_size
+
+# Crear un dataframe para ggplot2
+df_plot_data <- tibble(
+  Categoria = factor(c("Genes solo con Pb/Hg\n(Neurotoxicidad)", 
+                        "Genes solo con Alzheimer\n(GWAS)", 
+                        "Intersección: Pb/Hg y Alzheimer"),
+                     levels = c("Genes solo con Pb/Hg\n(Neurotoxicidad)", 
+                                "Genes solo con Alzheimer\n(GWAS)", 
+                                "Intersección: Pb/Hg y Alzheimer")), # Para ordenar las barras
+  Cantidad = c(solo_pbhg_size, solo_alzheimer_size, interseccion_size)
+)
+
+# --- 3. GENERACIÓN DEL GRÁFICO DE BARRAS ---
+
+p <- ggplot(df_plot_data, aes(x = Categoria, y = Cantidad, fill = Categoria)) +
+  geom_bar(stat = "identity", width = 0.7) + # Ajusta el ancho de las barras
+  geom_text(aes(label = Cantidad), vjust = -0.5, size = 5, fontface = "bold") + # Etiquetas de valor
+  scale_fill_manual(values = c("#0072B2", "#D55E00", "#CC79A7")) + # Colores consistentes y uno para intersección
+  labs(
+    title = "Genes Relacionados con Metales Pesados (Pb/Hg) y Alzheimer (GWAS)",
+    subtitle = "Distribución de Genes por Tipo de Asociación",
+    x = "", # No necesitamos etiqueta en el eje X para la categoría
+    y = "Número de Genes"
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 16),
+    plot.subtitle = element_text(hjust = 0.5, size = 12),
+    axis.text.x = element_text(angle = 15, hjust = 1, size = 11, face = "bold"),
+    axis.text.y = element_text(size = 10),
+    axis.title.y = element_text(size = 12, face = "bold"),
+    legend.position = "none"
+  ) +
+  ylim(0, max(df_plot_data$Cantidad) * 1.1)
+  
+print(p)
+
+```
+
+El gráfico superior muestra la distribución de los genes implicados en la neurotoxicidad por metales pesados (Plomo y Mercurio) y su correlación con los genes de riesgo genético de la enfermedad de Alzheimer (EA) identificados mediante estudios GWAS. Los resultados revelan una fuerte y significativa superposición: 
+
+&middot;Genes solo con Pb/Hg: 7246 genes interactúan exclusivamente con estos metales pesados, destacando un amplio espectro de dianas moleculares sensibles a la neurotoxicidad ambiental.
+
+&middot; Genes solo con Alzheimer (GWAS): 2186 genes están implicados en el riesgo genético de la EA sin que se les haya documentado una interacción conocida con Pb/Hg en la base de datos utilizada.
+
+&middot; Genes de Intersección : Se identificaron 1069 genes que demuestran una doble vulnerabilidad: no solo están asociados a la susceptibilidad genética de la EA (GWAS), sino que también se conoce que interactúan directamente con el Plomo o el Mercurio.
+
+La intersección de 1069 genes revelada en el gráfico es un hallazgo clave, ya que indica una doble vulnerabilidad en el desarrollo del Alzheimer. Esta coincidencia sugiere que los genes de riesgo identificados por GWAS también son dianas moleculares de neurotóxicos como el Plomo y el Mercurio. Por lo tanto, la exposición ambiental tiene el potencial de modular o potenciar la susceptibilidad genética, dando la posibilidad de que el estrés tóxico active o intensifique las mismas vías biológicas defectuosas asociadas al riesgo genético, contribuyendo así a la patogénesis de la enfermedad.
+
 # Mortalidad por Parkinson y su relacion con los niveles de plomo y mercurio
 Esta pregunta resume un análisis exploratorio sobre la relación entre las concentraciones poblacionales de mercurio (Hg) y plomo (Pb) en sangre (percentil P50) y el número estimado de muertes por Parkinson por país y año.
 
@@ -460,3 +548,95 @@ grafico_relacion_temporal_parkinson <- ggplot(df_pb_parkinson, aes(x = value, y 
 
 grafico_relacion_temporal_parkinson
 ```
+
+
+## ¿Qué genes interactúan con Hg/Pb y cuántos de ellos coinciden con los genes con asociación en GWAS?
+
+Tras analizar la superposición gen-ambiente en el contexto de la enfermedad de Alzheimer, extenderemos ahora este análisis a la Enfermedad de Parkinson (EP). El Parkinson, al igual que el Alzheimer, es una patología neurodegenerativa compleja donde la interacción entre la genética y los factores ambientales es crítica.Dado que el Plomo y el Mercurio son neurotóxicos reconocidos que interactúan con una amplia gama de proteínas, es crucial determinar si los genes que se conoce que interactúan con estos metales coinciden con los genes específicos implicados en la susceptibilidad al Parkinson identificados por los estudios GWAS
+
+En primer lugar, vamos a identificar los genes que interactúan con el Plomo y con el Mercurio, y a su vez, vamos a extraer y unificar estos genes que interactúan con los metales, según si están asociados con los genes en estudios GWAS para la Enfermedad de Parkinson.
+
+```{r grafico_barras_pbhg_parkinson_final, echo=FALSE, message=FALSE, warning=FALSE, fig.width=9, fig.height=6, results='hide'}
+# --- LIBRERÍAS REQUERIDAS ---
+library(tidyverse)
+
+# --- FUNCIÓN DE LIMPIEZA DE GENES (Estilo Tidyverse) ---
+limpiar_genes <- function(df) {
+  df %>%
+    separate_rows(mappedGenes, sep = ',') %>%
+    mutate(mappedGenes = str_trim(mappedGenes)) %>%
+    filter(!str_detect(mappedGenes, regex("NR|NA|-|^$|nan", ignore_case = TRUE))) %>%
+    pull(mappedGenes) %>%
+    unique() %>%
+    as.character()
+}
+
+# --- 1. CARGA Y PROCESAMIENTO DE DATOS ---
+df_metales <- read_csv("input/metales_pesados.csv")
+df_parkinson <- read_csv("input/genesParkinsonFiltrado.csv")
+
+# A) Obtener Genes que Interactúan con Plomo (Pb) y Mercurio (Hg)
+keywords_metales <- c('lead', 'Pb', 'mercury', 'mercuric', 'Hg', 'plomo', 'mercurio')
+set_metales_pbhg <- df_metales %>%
+  filter(str_detect(ChemicalName, regex(paste(keywords_metales, collapse = '|'), ignore_case = TRUE))) %>%
+  pull(GeneSymbol) %>%
+  unique() %>%
+  na.omit() %>%
+  as.character()
+
+# B) Obtener Genes Asociados a Parkinson (GWAS)
+set_parkinson_gwas <- limpiar_genes(df_parkinson)
+
+# --- 2. PREPARAR DATOS PARA EL GRÁFICO DE BARRAS ---
+
+interseccion_size <- length(intersect(set_metales_pbhg, set_parkinson_gwas))
+solo_pbhg_size <- length(set_metales_pbhg) - interseccion_size
+solo_parkinson_size <- length(set_parkinson_gwas) - interseccion_size
+
+# La creación de esta variable es suprimida por results='hide'
+df_plot_data <- tibble(
+  Categoria = factor(c("Genes solo con Pb/Hg\n(Neurotoxicidad)", 
+                        "Genes solo con Parkinson\n(GWAS)", 
+                        "Intersección: Pb/Hg y Parkinson"),
+                     levels = c("Genes solo con Pb/Hg\n(Neurotoxicidad)", 
+                                "Genes solo con Parkinson\n(GWAS)", 
+                                "Intersección: Pb/Hg y Parkinson")),
+  Cantidad = c(solo_pbhg_size, solo_parkinson_size, interseccion_size)
+)
+
+# --- 3. GENERACIÓN DEL GRÁFICO DE BARRAS (Asignación) ---
+
+p <- ggplot(df_plot_data, aes(x = Categoria, y = Cantidad, fill = Categoria)) +
+  geom_bar(stat = "identity", width = 0.7) + 
+  geom_text(aes(label = Cantidad), vjust = -0.5, size = 5, fontface = "bold") + 
+  scale_fill_manual(values = c("#0072B2", "#E69F00", "#CC79A7")) + 
+  labs(
+    title = "Genes Relacionados con Metales Pesados (Pb/Hg) y Parkinson (GWAS)",
+    subtitle = "Distribución de Genes por Tipo de Asociación",
+    x = "", 
+    y = "Número de Genes"
+  ) +
+  theme_bw() + 
+  theme(
+    plot.title = element_text(hjust = 0.5, face = "bold", size = 16),
+    plot.subtitle = element_text(hjust = 0.5, size = 12),
+    axis.text.x = element_text(angle = 45, hjust = 1, size = 11, face = "bold"),
+    axis.text.y = element_text(size = 10),
+    axis.title.y = element_text(size = 12, face = "bold"),
+    legend.position = "none"
+  ) +
+  ylim(0, max(df_plot_data$Cantidad) * 1.1)
+
+# LÍNEA CRÍTICA FINAL: Usamos print(p) para forzar la salida gráfica.
+print(p)
+```
+
+El gráfico superior muestra la distribución de los genes implicados en la neurotoxicidad por metales pesados (Plomo y Mercurio) y su correlación con los genes de riesgo genético de la enfermedad de Parkinson (EP) identificados mediante estudios GWAS. Los resultados revelan una superposición significativa que se desglosa en:
+
+&middot; Genes solo con Pb/Hg: 8,141 genes interactúan exclusivamente con estos metales pesados, destacando un amplio espectro de dianas moleculares sensibles a la neurotoxicidad ambiental.
+
+&middot; Genes solo con Parkinson (GWAS): 292 genes están implicados en el riesgo genético de la EP sin que se les haya documentado una interacción conocida con Pb/Hg en la base de datos utilizada.
+
+&middot; Genes de Intersección: Se identificaron 174 genes que demuestran una doble vulnerabilidad: no solo están asociados a la susceptibilidad genética de la EP (GWAS), sino que también se conoce que interactúan directamente con el Plomo o el Mercurio.
+
+La intersección de 174 genes entre las dianas de Plomo/Mercurio (Pb/Hg) y los genes de riesgo de Parkinson (GWAS) es un hallazgo esencial. Esta doble vulnerabilidad sugiere que la exposición a estos metales pesados tiene el potencial de modular o potenciar la susceptibilidad genética a la enfermedad. El estrés tóxico inducido por los metales podría activar o intensificar las mismas vías biológicas defectuosas asociadas al riesgo genético, dando la posibilidad de contribuir a la patogénesis y progresión del Parkinson. 
