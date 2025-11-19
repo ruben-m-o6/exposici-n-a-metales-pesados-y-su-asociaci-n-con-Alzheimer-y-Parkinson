@@ -1,0 +1,149 @@
+mappedGenes,riskAllele,traitName,pValue,orValue,ChemicalName,Interaction,InteractionActions
+AGAP1,rs10929159-A,Parkinson's disease,7e-8,1.0626993,Lead,Lead affects the expression of AGAP1 mRNA,affects^expression
+AGAP1,rs10929159-A,Parkinson's disease,7e-8,1.0626993,methylmercuric chloride,methylmercuric chloride results in increased expression of AGAP1 mRNA,increases^expression
+ANO5,rs11026412-?,Parkinson's disease,3e-6,1.16,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of ANO5 mRNA",affects^cotreatment|decreases^expression
+ANO5,rs11026412-?,Parkinson's disease,3e-6,1.16,methylmercuric chloride,methylmercuric chloride results in decreased expression of ANO5 mRNA,decreases^expression
+APOE,rs429358-C,Parkinson’s disease progression to dementia,2e-15,2.41,Lead,Lead affects the expression of APOE protein,affects^expression
+APOE,rs429358-C,Parkinson’s disease progression to dementia,2e-15,2.41,Mercury,APOE gene polymorphism affects the susceptibility to Mercury,affects^response to substance
+APOE,rs429358-C,Parkinson’s disease progression to dementia,2e-15,2.41,methylmercuric chloride,methylmercuric chloride results in decreased expression of APOE mRNA,decreases^expression
+ASH1L,rs145330152-C,Parkinson's disease,1e-9,2.22123,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of ASH1L mRNA",affects^cotreatment|decreases^expression
+BBS9,rs78294974-A,Parkinson’s disease progression to dementia,4e-8,3.9,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of BBS9 mRNA",affects^cotreatment|increases^expression
+BBS9,rs78294974-A,Parkinson’s disease progression to dementia,4e-8,3.9,mercuric bromide,mercuric bromide results in increased expression of BBS9 mRNA,increases^expression
+BBS9,rs78294974-A,Parkinson’s disease progression to dementia,4e-8,3.9,methylmercuric chloride,methylmercuric chloride results in increased expression of BBS9 mRNA,increases^expression
+BRINP1,rs4837628-A,Parkinson's disease,1e-6,1.27,methylmercuric chloride,methylmercuric chloride results in increased expression of BRINP1 mRNA,increases^expression
+BST1,rs11724635-A,Parkinson's disease,1e-19,1.1111112,methylmercuric chloride,methylmercuric chloride results in increased expression of BST1 mRNA,increases^expression
+CAB39L,rs9568188-T,Parkinson's disease,4e-7,1.0683761,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of CAB39L mRNA",affects^cotreatment|increases^expression
+CAB39L,rs9568188-T,Parkinson's disease,4e-7,1.0683761,mercuric bromide,mercuric bromide results in increased expression of CAB39L mRNA,increases^expression
+CAB39L,rs9568188-T,Parkinson's disease,4e-7,1.0683761,methylmercuric chloride,methylmercuric chloride results in increased expression of CAB39L mRNA,increases^expression
+CAMK2D,rs78738012-C,Parkinson's disease,5e-11,1.13,Lead,Lead affects the expression of CAMK2D mRNA,affects^expression
+CAMK2D,rs78738012-C,Parkinson's disease,5e-11,1.13,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of CAMK2D mRNA",affects^cotreatment|increases^expression
+CAMK2D,rs78738012-C,Parkinson's disease,5e-11,1.13,mercuric bromide,mercuric bromide results in increased expression of CAMK2D mRNA,increases^expression
+CAMK2D,rs78738012-C,Parkinson's disease,5e-11,1.13,methylmercuric chloride,methylmercuric chloride results in increased expression of CAMK2D mRNA,increases^expression
+CARS2,rs74125032-T,Parkinson's disease,2e-10,4.49847e-10,Lead,Lead affects the expression of CARS2 mRNA,affects^expression
+CARS2,rs74125032-T,Parkinson's disease,2e-10,4.49847e-10,methylmercuric chloride,methylmercuric chloride results in increased expression of CARS2 mRNA,increases^expression
+CHL1,rs3773384-C,Parkinsonism in frontotemporal lobe dementia,4e-6,2.3255813,Lead,Lead affects the splicing of CHL1 mRNA,affects^splicing
+CHL1,rs3773384-C,Parkinsonism in frontotemporal lobe dementia,4e-6,2.3255813,methylmercuric chloride,methylmercuric chloride results in decreased expression of CHL1 mRNA,decreases^expression
+CNTN1,rs1442190-?,Parkinson's disease,2e-27,3.72,Lead,Lead affects the expression of CNTN1 mRNA,affects^expression
+COL3A1,rs997277-?,Parkinson disease and lewy body pathology,5e-8,1.63,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of COL3A1 mRNA",affects^cotreatment|increases^expression
+COL3A1,rs997277-?,Parkinson disease and lewy body pathology,5e-8,1.63,mercuric bromide,"[NOG protein co-treated with mercuric bromide co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of COL3A1 mRNA",affects^cotreatment|increases^expression
+COL3A1,rs997277-?,Parkinson disease and lewy body pathology,5e-8,1.63,methylmercuric chloride,methylmercuric chloride results in decreased expression of COL3A1 mRNA,decreases^expression
+COL5A2,rs11186-?,Parkinson's disease,1e-6,2.79,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of COL5A2 mRNA",affects^cotreatment|increases^expression
+COL5A2,rs11186-?,Parkinson's disease,1e-6,2.79,methylmercuric chloride,methylmercuric chloride results in decreased expression of COL5A2 mRNA,decreases^expression
+CTSB,rs2740594-A,Parkinson's disease,6e-12,1.09,Ethylmercury Compounds,Ethylmercury Compounds results in increased expression of CTSB protein,increases^expression
+CTSB,rs2740594-A,Parkinson's disease,6e-12,1.09,Methylmercury Compounds,BAX protein affects the reaction [Methylmercury Compounds affects the localization of CTSB protein],affects^localization|affects^reaction
+CTSB,rs2740594-A,Parkinson's disease,6e-12,1.09,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of CTSB mRNA",affects^cotreatment|increases^expression
+DCUN1D1,rs9858038-?,Parkinson's disease,3e-14,1.172,lead acetate,[lead acetate co-treated with zinc protoporphyrin] results in increased expression of DCUN1D1 mRNA,affects^cotreatment|increases^expression
+DLG2,rs3793947-G,Parkinson's disease,4e-9,1.0752687,Lead,Lead affects the expression of DLG2 mRNA,affects^expression
+EFNB1,rs11796528-A,Parkinson's disease,1e-6,1.08,Mercury,Mercury results in increased expression of EFNB1 mRNA,increases^expression
+FDFT1,rs1296028-?,Parkinson's disease,1e-6,1.15,Lead,Lead results in decreased expression of FDFT1 mRNA,decreases^expression
+FDFT1,rs1296028-?,Parkinson's disease,1e-6,1.15,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of FDFT1 mRNA",affects^cotreatment|decreases^expression
+FDFT1,rs1296028-?,Parkinson's disease,1e-6,1.15,methylmercuric chloride,methylmercuric chloride results in increased expression of FDFT1 mRNA,increases^expression
+GCH1,rs11158026-C,Parkinson's disease,4e-16,1.098901,methylmercuric chloride,methylmercuric chloride results in decreased expression of GCH1 mRNA,decreases^expression
+GFPT2,rs10464059-A,Parkinson's disease,3e-6,1.33,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of GFPT2 mRNA",affects^cotreatment|increases^expression
+GPM6B,rs7066890-T,Parkinson's disease,1e-8,1.1,Lead,Lead affects the expression of GPM6B mRNA,affects^expression
+GPM6B,rs7066890-T,Parkinson's disease,1e-8,1.1,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of GPM6B mRNA",affects^cotreatment|decreases^expression
+GPM6B,rs7066890-T,Parkinson's disease,1e-8,1.1,lead acetate,lead acetate results in decreased expression of GPM6B mRNA,decreases^expression
+GPM6B,rs7066890-T,Parkinson's disease,1e-8,1.1,mercuric bromide,mercuric bromide results in decreased expression of GPM6B mRNA,decreases^expression
+GPNMB,rs199347-A,Parkinson's disease,4e-18,1.098901,Lead,Lead affects the expression of GPNMB mRNA,affects^expression
+GPNMB,rs199347-A,Parkinson's disease,4e-18,1.098901,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of GPNMB mRNA",affects^cotreatment|increases^expression
+GPNMB,rs199347-A,Parkinson's disease,4e-18,1.098901,lead chloride,[cadmium sulfate co-treated with cobaltous chloride co-treated with lead chloride] results in increased expression of GPNMB mRNA,affects^cotreatment|increases^expression
+GPNMB,rs199347-A,Parkinson's disease,4e-18,1.098901,mercuric bromide,mercuric bromide results in increased expression of GPNMB mRNA,increases^expression
+GPNMB,rs199347-A,Parkinson's disease,4e-18,1.098901,methylmercuric chloride,methylmercuric chloride results in decreased expression of GPNMB mRNA,decreases^expression
+HLA-DQA1,rs17425622-?,Parkinson's disease,4e-17,1.235,Mercury,Mercury results in decreased expression of HLA-DQA1 mRNA,decreases^expression
+HLA-DQB1,rs9275326-C,Parkinson's disease,1e-13,1.1764705,Mercury,Mercury results in decreased expression of HLA-DQB1 mRNA,decreases^expression
+HLA-DQB1,rs9275326-C,Parkinson's disease,1e-13,1.1764705,methylmercuric chloride,methylmercuric chloride results in decreased expression of HLA-DQB1 mRNA,decreases^expression
+HLA-DRA,rs2395163-?,Parkinson's disease,3e-11,1.24,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of HLA-DRA mRNA",affects^cotreatment|decreases^expression
+HLA-DRB1,rs17425622-?,Parkinson's disease,4e-17,1.235,Lead,Lead affects the expression of HLA-DRB1 mRNA,affects^expression
+HYCC1,rs10256359-?,Parkinson's disease,2e-12,1.1273957,Lead,Lead affects the expression of HYCC1 mRNA,affects^expression
+IGSF11,rs1879553-?,Parkinson's disease,1e-6,2.83,Lead,Lead affects the expression of IGSF11 mRNA,affects^expression
+IGSF11,rs1879553-?,Parkinson's disease,1e-6,2.83,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of IGSF11 mRNA",affects^cotreatment|increases^expression
+IGSF11,rs1879553-?,Parkinson's disease,1e-6,2.83,methylmercuric chloride,methylmercuric chloride results in decreased expression of IGSF11 mRNA,decreases^expression
+IGSF9B,rs329648-T,Parkinson's disease,1e-13,1.09,Lead,Lead affects the expression of IGSF9B mRNA,affects^expression
+ING1,rs74125084-T,Parkinson's disease,1e-7,1.058e-4,methylmercuric chloride,methylmercuric chloride results in increased expression of ING1 mRNA,increases^expression
+INPP5F,rs117896735-A,Parkinson's disease,2e-19,1.65,Lead,Lead affects the expression of INPP5F mRNA,affects^expression
+ITGA8,rs10906923-A,Parkinson's disease,1e-8,1.0752687,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of ITGA8 mRNA",affects^cotreatment|increases^expression
+ITGA8,rs10906923-A,Parkinson's disease,1e-8,1.0752687,mercuric bromide,mercuric bromide results in increased expression of ITGA8 mRNA,increases^expression
+ITGAE,rs117672332-T,Parkinson's disease,2e-15,7.6928,lead acetate,[sodium arsenite co-treated with lead acetate] results in increased expression of ITGAE protein,affects^cotreatment|increases^expression
+ITIH1,rs143918452-A,Parkinson's disease,3e-8,1.4705882,Mercury,Mercury affects the expression of ITIH1 protein,affects^expression
+ITPKB,rs4653767-T,Parkinson's disease,2e-11,1.0869565,Lead,Lead affects the expression of ITPKB mRNA,affects^expression
+ITPKB,rs4653767-T,Parkinson's disease,2e-11,1.0869565,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of ITPKB mRNA",affects^cotreatment|increases^expression
+ITPKB,rs4653767-T,Parkinson's disease,2e-11,1.0869565,methylmercuric chloride,methylmercuric chloride results in increased expression of ITPKB mRNA,increases^expression
+KCNIP4,rs141863958-?,Parkinson disease and lewy body pathology,1e-6,3.32,Lead,Lead affects the expression of KCNIP4 mRNA,affects^expression
+KCNIP4,rs141863958-?,Parkinson disease and lewy body pathology,1e-6,3.32,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of KCNIP4 mRNA",affects^cotreatment|increases^expression
+KCNN3,rs1630500-?,Parkinson's disease,2e-8,1.75,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of KCNN3 mRNA",affects^cotreatment|decreases^expression
+KCNN3,rs1630500-?,Parkinson's disease,2e-8,1.75,methylmercuric chloride,methylmercuric chloride results in decreased expression of KCNN3 mRNA,decreases^expression
+KTN1,rs8017172-G,Parkinson's disease,2e-7,1.0615711,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of KTN1 mRNA",affects^cotreatment|increases^expression
+LINC02210,rs365825-?,Parkinson's disease,3.9999999999999997e-32,1.2722646,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of LINC02210 mRNA",affects^cotreatment|decreases^expression
+LMNB1,rs959573-?,Parkinson's disease (motor and cognition),5e-6,1.92,Lead,Lead affects the expression of LMNB1 mRNA,affects^expression
+LMNB1,rs959573-?,Parkinson's disease (motor and cognition),5e-6,1.92,Mercuric Chloride,Mercuric Chloride results in increased activity of LMNB1 protein,increases^activity
+LSAMP,rs1879553-?,Parkinson's disease,1e-6,2.83,Lead,Lead affects the expression of LSAMP mRNA,affects^expression
+LSAMP,rs1879553-?,Parkinson's disease,1e-6,2.83,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of LSAMP mRNA",affects^cotreatment|decreases^expression
+LSAMP,rs1879553-?,Parkinson's disease,1e-6,2.83,mercuric bromide,mercuric bromide results in decreased expression of LSAMP mRNA,decreases^expression
+LSAMP,rs1879553-?,Parkinson's disease,1e-6,2.83,methylmercuric chloride,methylmercuric chloride results in decreased expression of LSAMP mRNA,decreases^expression
+LZTS3,rs8118008-A,Parkinson's disease,3e-11,1.111,Lead,Lead affects the expression of LZTS3 mRNA,affects^expression
+MAP4K4,rs34043159-C,Parkinson's disease,5e-11,1.08,Lead,Lead affects the splicing of MAP4K4 mRNA,affects^splicing
+MAP4K4,rs34043159-C,Parkinson's disease,5e-11,1.08,lead acetate,lead acetate results in increased expression of MAP4K4 mRNA,increases^expression
+MAP4K4,rs34043159-C,Parkinson's disease,5e-11,1.08,mercuric bromide,mercuric bromide results in increased expression of MAP4K4 mRNA,increases^expression
+MAP4K4,rs34043159-C,Parkinson's disease,5e-11,1.08,methylmercuric chloride,methylmercuric chloride results in increased expression of MAP4K4 mRNA,increases^expression
+MAPT,rs17649553-C,Parkinson's disease,9.999999999999999e-69,1.2820514,Mercuric Chloride,Melatonin inhibits the reaction [Mercuric Chloride results in increased phosphorylation of MAPT protein],decreases^reaction|increases^phosphorylation
+MAPT,rs17649553-C,Parkinson's disease,9.999999999999999e-69,1.2820514,Methylmercury Compounds,Dizocilpine Maleate inhibits the reaction [Methylmercury Compounds results in increased phosphorylation of MAPT protein],decreases^reaction|increases^phosphorylation
+MAPT,rs17649553-C,Parkinson's disease,9.999999999999999e-69,1.2820514,lead acetate,lead acetate results in increased expression of and results in increased phosphorylation of MAPT protein,increases^expression|increases^phosphorylation
+MARCHF3,rs959573-?,Parkinson's disease (motor and cognition),5e-6,1.92,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of MARCHF3 mRNA",affects^cotreatment|decreases^expression
+MDGA2,rs9323124-?,Parkinson's disease,1e-6,3.97,Lead,Lead affects the expression of MDGA2 mRNA,affects^expression
+MED13,rs6416935-G,Parkinson's disease,4e-7,1.081081,Lead,Lead results in decreased expression of MED13 mRNA,decreases^expression
+MED13,rs6416935-G,Parkinson's disease,4e-7,1.081081,methylmercuric chloride,methylmercuric chloride results in decreased expression of MED13 mRNA,decreases^expression
+MMRN1,rs6532194-?,Parkinson's disease,5e-11,1.29,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of MMRN1 mRNA",affects^cotreatment|increases^expression
+NUCKS1,rs823118-T,Parkinson's disease,1.0000000000000001e-23,1.1235955,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of NUCKS1 mRNA",affects^cotreatment|decreases^expression
+P2RX5,rs117672332-T,Parkinson's disease,2e-15,7.6928,Lead,Lead affects the expression of P2RX5 mRNA,affects^expression
+P2RX5,rs117672332-T,Parkinson's disease,2e-15,7.6928,methylmercuric chloride,methylmercuric chloride results in decreased expression of P2RX5 mRNA,decreases^expression
+PLPP4,rs12771445-T,Parkinson's disease,1e-8,0.663,methylmercuric chloride,methylmercuric chloride results in decreased expression of PLPP4 mRNA,decreases^expression
+PMVK,rs1630500-?,Parkinson's disease,2e-8,1.75,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of PMVK mRNA",affects^cotreatment|decreases^expression
+PMVK,rs1630500-?,Parkinson's disease,2e-8,1.75,methylmercuric chloride,methylmercuric chloride results in decreased expression of PMVK mRNA,decreases^expression
+POLR3B,rs4964469-A,Parkinson's disease,2e-7,1.16,Lead,Lead results in increased expression of POLR3B mRNA,increases^expression
+POLR3B,rs4964469-A,Parkinson's disease,2e-7,1.16,methylmercuric chloride,methylmercuric chloride results in decreased expression of POLR3B mRNA,decreases^expression
+PRSS53,rs11865038-?,Parkinson's disease,4e-7,1.14,Lead,Lead results in decreased expression of PRSS53 mRNA,decreases^expression
+RAB25,rs34372695-T,Parkinson's disease,4e-12,1.47,methylmercuric chloride,methylmercuric chloride results in decreased expression of RAB25 mRNA,decreases^expression
+RBMS3,rs7617877-A,Parkinson's disease,3e-6,1.23,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of RBMS3 mRNA",affects^cotreatment|increases^expression
+RBMS3,rs7617877-A,Parkinson's disease,3e-6,1.23,mercuric bromide,mercuric bromide results in increased expression of RBMS3 mRNA,increases^expression
+RFX4,rs4964469-A,Parkinson's disease,2e-7,1.16,mercuric bromide,mercuric bromide results in decreased expression of RFX4 mRNA,decreases^expression
+RFX4,rs4964469-A,Parkinson's disease,2e-7,1.16,methylmercuric chloride,methylmercuric chloride results in decreased expression of RFX4 mRNA,decreases^expression
+RORA,rs2414739-A,Parkinson's disease,4e-14,1.098901,methylmercuric chloride,methylmercuric chloride results in decreased expression of RORA mRNA,decreases^expression
+RPL10,rs28602900-A,Parkinson's disease,1e-9,1.1,Lead,Lead affects the expression of RPL10 mRNA,affects^expression
+SCN2A,rs353116-C,Parkinson's disease,3e-8,1.0638298,Lead,Lead affects the expression of SCN2A mRNA,affects^expression
+SCN2A,rs353116-C,Parkinson's disease,3e-8,1.0638298,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of SCN2A mRNA",affects^cotreatment|increases^expression
+SCN2A,rs353116-C,Parkinson's disease,3e-8,1.0638298,mercuric bromide,mercuric bromide results in increased expression of SCN2A mRNA,increases^expression
+SEMA5A,rs7702187-?,Parkinson's disease,8e-6,1.74,methylmercuric chloride,methylmercuric chloride results in decreased expression of SEMA5A mRNA,decreases^expression
+SH3GL2,rs13294100-G,Parkinson's disease,5e-13,1.0869565,Lead,Lead affects the expression of SH3GL2 mRNA,affects^expression
+SH3GL2,rs13294100-G,Parkinson's disease,5e-13,1.0869565,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of SH3GL2 mRNA",affects^cotreatment|decreases^expression
+SH3GL2,rs13294100-G,Parkinson's disease,5e-13,1.0869565,methylmercuric chloride,methylmercuric chloride results in decreased expression of SH3GL2 mRNA,decreases^expression
+SIPA1L2,rs10797576-T,Parkinson's disease,8e-13,1.12,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of SIPA1L2 mRNA",affects^cotreatment|increases^expression
+SIPA1L2,rs10797576-T,Parkinson's disease,8e-13,1.12,mercuric bromide,mercuric bromide results in increased expression of SIPA1L2 mRNA,increases^expression
+SIPA1L2,rs10797576-T,Parkinson's disease,8e-13,1.12,methylmercuric chloride,methylmercuric chloride results in increased expression of SIPA1L2 mRNA,increases^expression
+SLC2A13,rs1384236-C,Parkinson's disease,8e-12,1.551,Lead,Lead affects the expression of SLC2A13 mRNA,affects^expression
+SLC2A13,rs1384236-C,Parkinson's disease,8e-12,1.551,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of SLC2A13 mRNA",affects^cotreatment|increases^expression
+SLC41A1,rs947211-?,Parkinson's disease,2e-12,1.3,Lead,Lead affects the expression of SLC41A1 mRNA,affects^expression
+SNCA,rs356182-G,Parkinson's disease,4.9999999999999996e-123,1.33,Lead,Lead results in decreased expression of SNCA mRNA,decreases^expression
+SNCA,rs356182-G,Parkinson's disease,4.9999999999999996e-123,1.33,mercuric bromide,mercuric bromide results in decreased expression of SNCA mRNA,decreases^expression
+SP1,rs34656641-C,Parkinsonism in frontotemporal lobe dementia,8e-6,3.26,Lead,Lead results in increased expression of SP1 protein,increases^expression
+SP1,rs34656641-C,Parkinsonism in frontotemporal lobe dementia,8e-6,3.26,lead acetate,lead acetate results in increased expression of SP1 protein,increases^expression
+SP1,rs34656641-C,Parkinsonism in frontotemporal lobe dementia,8e-6,3.26,methylmercuric chloride,methylmercuric chloride results in decreased expression of SP1 mRNA,decreases^expression
+SREBF1,rs11868035-G,Parkinson's disease,6e-8,1.18,lead acetate,lead acetate results in increased expression of SREBF1 protein,increases^expression
+STK39,rs1474055-T,Parkinson's disease,6e-26,1.2048193,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of STK39 mRNA",affects^cotreatment|decreases^expression
+SV2C,rs246814-C,Parkinson's disease,6e-10,1.11,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of SV2C mRNA",affects^cotreatment|increases^expression
+SV2C,rs246814-C,Parkinson's disease,6e-10,1.11,mercuric bromide,mercuric bromide results in decreased expression of SV2C mRNA,decreases^expression
+SV2C,rs246814-C,Parkinson's disease,6e-10,1.11,methylmercuric chloride,methylmercuric chloride results in decreased expression of SV2C mRNA,decreases^expression
+SYT17,rs11343-T,Parkinson's disease,9e-11,1.07,Lead,Lead affects the expression of SYT17 mRNA,affects^expression
+SYT17,rs11343-T,Parkinson's disease,9e-11,1.07,methylmercuric chloride,methylmercuric chloride results in decreased expression of SYT17 mRNA,decreases^expression
+TMEM229B,rs1555399-T,Parkinson's disease,7e-14,1.1148,Lead,Lead affects the expression of TMEM229B mRNA,affects^expression
+TPM1,rs117267308-A,"Parkinson's disease (familial, age at onset)",9e-11,4.55,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of TPM1 mRNA",affects^cotreatment|increases^expression
+TPM1,rs117267308-A,"Parkinson's disease (familial, age at onset)",9e-11,4.55,methylmercuric chloride,methylmercuric chloride results in decreased expression of TPM1 mRNA,decreases^expression
+TRPS1,rs74335301-?,"Parkinson's disease (familial, age at onset)",3e-6,2.2,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of TRPS1 mRNA",affects^cotreatment|increases^expression
+TRPS1,rs74335301-?,"Parkinson's disease (familial, age at onset)",3e-6,2.2,mercuric bromide,mercuric bromide results in increased expression of TRPS1 mRNA,increases^expression
+TRPS1,rs74335301-?,"Parkinson's disease (familial, age at onset)",3e-6,2.2,methylmercuric chloride,methylmercuric chloride results in increased expression of TRPS1 mRNA,increases^expression
+WBP1L,rs17115100-G,Parkinson's disease,7e-8,1.25,Lead,Lead affects the expression of WBP1L mRNA,affects^expression
+WDR41,rs137887044-C,Parkinson's disease,2e-8,1.8504,methylmercuric chloride,methylmercuric chloride results in decreased expression of WDR41 mRNA,decreases^expression
+WNT3,rs199515-?,Parkinson's disease,3e-17,1.32,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in increased expression of WNT3 mRNA",affects^cotreatment|increases^expression
+WSCD2,rs10746109-A,Parkinson's disease,4e-6,1.46,Phenylmercuric Acetate,"[NOG protein co-treated with Phenylmercuric Acetate co-treated with dorsomorphin co-treated with 4-(5-benzo(1,3)dioxol-5-yl-4-pyridin-2-yl-1H-imidazol-2-yl)benzamide] results in decreased expression of WSCD2 mRNA",affects^cotreatment|decreases^expression
+ZNF165,rs17767294-G,Parkinson's disease,2e-7,1.107,methylmercuric chloride,methylmercuric chloride results in increased expression of ZNF165 mRNA,increases^expression
+ZNF322,rs2451713-C,Parkinson's disease,5e-8,1.88,methylmercuric chloride,methylmercuric chloride results in decreased expression of ZNF322 mRNA,decreases^expression
+ZSCAN16-AS1,rs17767294-G,Parkinson's disease,2e-7,1.107,methylmercuric chloride,methylmercuric chloride results in increased expression of ZSCAN16-AS1 mRNA,increases^expression
