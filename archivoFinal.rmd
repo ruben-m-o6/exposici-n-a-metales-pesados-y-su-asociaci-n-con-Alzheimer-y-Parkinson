@@ -477,92 +477,74 @@ A partir de este gráfico podemos realizar un análisis del ranking de Villanos.
 
 En conclusión, el Ranking de Villanos establece una jerarquía donde los derivados de Mercurio Orgánico representan la mayor amenaza en términos de amplitud de genes de riesgo afectados, informando nuestra hipótesis de que estos compuestos son los principales impulsores de la sinergia tóxica.
 
-otro gráfico: 
+### ¿Implica la exposion a un metal directamente que vaya a haber un aumento de desarrollar alzheimer?
 ```{r genes-interaccion-alzheimer-, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}
-library(readr)
-library(dplyr)
-library(ggplot2)
-library(ggrepel) # Para evitar que se superpongan las etiquetas
-library(plotly) # Para la interactividad
-# library(ggrepel) # No se necesita para plotly
+df <- read.csv("results/Analisis_Genes_Metales_Alzheimer_SoloOdds.csv", stringsAsFactors = FALSE)
 
-# Cargar el archivo de datos limpio de Alzheimer (asumiendo que está en inputs/)
-source("alzheimerMetalesGenes.R")
-
-# CORRECTIVO DE COLUMNAS: Aseguramos que las columnas clave se llamen correctamente.
-df_alzheimer <- df_alzheimer %>%
-  rename(
-    mappedGenes = any_of("mappedGenes"),      
-    orValue = any_of("orValue"),              
-    ChemicalName = any_of("ChemicalName")     
-  ) %>%
-  rename(
-    ChemicalName = any_of(c("chemicalName", "Chemical.Name", "Chemical name", "Chemical_Name")),
-    mappedGenes = any_of(c("MappedGenes", "mapped_genes", "GeneSymbol")),
-    orValue = any_of(c("orvalue", "OddsRatio"))
-  )
-
-# 1. Preparación de datos para el Plot de Impacto
-df_plot <- df_alzheimer %>%
-  # Calcular valores transformados para los ejes
+# 2. Procesamiento de datos
+df_clean <- df %>%
+  mutate(Metal_Effect = case_when(
+    grepl("increases\\^expression", InteractionActions) & !grepl("decreases\\^expression", InteractionActions) ~ "Metal Aumenta Expresión",
+    grepl("decreases\\^expression", InteractionActions) & !grepl("increases\\^expression", InteractionActions) ~ "Metal Disminuye Expresión",
+    TRUE ~ "Otro"
+  )) %>%
+  filter(Metal_Effect != "Otro") %>%
   mutate(
-    neg_log_pvalue = -log10(pValue),
-    log_or_value = log10(orValue),
-    # Creamos un texto personalizado para el tooltip
-    Tooltip_Text = paste(
-      "Gen:", mappedGenes, 
-      "<br>Químico:", ChemicalName, 
-      "<br>OR:", round(orValue, 3),
-      "<br>P-Value:", format.pval(pValue, digits = 2),
-      "<br>Acción:", InteractionActions
-    )
-  ) %>%
-  
-  # Clasificar las interacciones en zonas de riesgo 
-  mutate(
-    Zona_Impacto = case_when(
-      orValue > 1 & InteractionActions == "increase" ~ "Tormenta Perfecta (Sinergia Tóxica)",
-      orValue < 1 & InteractionActions == "decrease" ~ "Defensa Rota (Protección Anulada)",
-      orValue > 1 & InteractionActions == "decrease" ~ "Riesgo Mitigado",
-      orValue < 1 & InteractionActions == "increase" ~ "Protección Reducida",
-      TRUE ~ "Neutro"
+    LogOR = log2(orValue),
+    LogP = -log10(pValue),
+    Scenario = case_when(
+      orValue > 1 & Metal_Effect == "Metal Aumenta Expresión" ~ "AGRAVA RIESGO\n(Metal sube gen de riesgo)",
+      orValue < 1 & Metal_Effect == "Metal Aumenta Expresión" ~ "BENEFICIOSO\n(Metal sube gen protector)",
+      orValue > 1 & Metal_Effect == "Metal Disminuye Expresión" ~ "MITIGA RIESGO\n(Metal baja gen de riesgo)",
+      orValue < 1 & Metal_Effect == "Metal Disminuye Expresión" ~ "ROMPE PROTECCIÓN\n(Metal baja gen protector)"
+    ),
+    # AQUÍ DEFINIMOS LA INFORMACIÓN DEL TOOLTIP (HOVER)
+    hover_text = paste0(
+      "<b>Gen:</b> ", mappedGenes, "<br>",
+      "<b>Metal:</b> ", ChemicalName, "<br>",
+      "<b>Interacción:</b> ", Interaction, "<br>",
+      "<b>Odds Ratio (OR):</b> ", round(orValue, 3), "<br>",
+      "<b>P-value:</b> ", format(pValue, scientific = TRUE, digits = 3), "<br>",
+      "<b>Escenario:</b> ", Scenario
     )
   )
 
-# 2. Crear el Scatter Plot base (ggplot)
-plot_base <- ggplot(df_plot, aes(x = log_or_value, y = neg_log_pvalue, color = Zona_Impacto, text = Tooltip_Text)) + # Usamos 'text' para el tooltip
-  geom_point(alpha = 0.7, size = 3) +
-  
-  # Líneas de referencia
-  geom_hline(yintercept = -log10(0.05), linetype = "dotted", color = "gray") +
-  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
-  
-  # Etiquetado y Temas
+# 3. Generar el gráfico estático (ggplot)
+# Nota: Añadimos 'text = hover_text' en el aes() global
+p <- ggplot(df_clean, aes(x = LogOR, y = LogP, color = Scenario, text = hover_text)) +
+  geom_point(alpha = 0.6, size = 2) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray40") +
+  facet_wrap(~Metal_Effect, nrow = 2, scales = "fixed") +
+  scale_color_manual(values = c(
+    "AGRAVA RIESGO\n(Metal sube gen de riesgo)" = "#D7191C",
+    "BENEFICIOSO\n(Metal sube gen protector)" = "#2C7BB6",
+    "MITIGA RIESGO\n(Metal baja gen de riesgo)" = "#ABD9E9",
+    "ROMPE PROTECCIÓN\n(Metal baja gen protector)" = "#FDAE61"
+  )) +
   labs(
-    title = "Scatter Plot de Impacto: Riesgo Genético vs. Interacción con Metales (Alzheimer)",
-    subtitle = "El Cuadrante del Peligro (Interactivo)",
-    x = expression(log[10] * "(Odds Ratio - OR)"),
-    y = expression("-log"[10] * "(P-Value)"),
-    color = "Zona de Impacto"
+    title = "Impacto de Metales en Genes de Alzheimer",
+    x = "Log2(Odds Ratio)",
+    y = "-Log10(P-value)",
+    color = "Interpretación"
   ) +
   theme_minimal() +
-  scale_color_manual(values = c(
-    "Tormenta Perfecta (Sinergia Tóxica)" = "#CC3333",          
-    "Defensa Rota (Protección Anulada)" = "#FF9933",            
-    "Riesgo Mitigado" = "skyblue",
-    "Protección Reducida" = "green"
-  ))
+  theme(
+    legend.position = "bottom",
+    strip.text = element_text(size = 10, face = "bold")
+  )
 
-# 3. Convertir a interactivo usando ggplotly
-ggplotly(plot_base, tooltip = "text")
+# 4. Convertir a interactivo con plotly
+# 'tooltip = "text"' le dice que use solo nuestra columna personalizada
+ggplotly(p, tooltip = "text")
 ```
 
-Este Scatter Plot de Impacto permite priorizar el estudio de los genes más críticos en las zonas de peligro:
+**1. Sinergia Negativa:** Exacerbación del Perfil de Riesgo (Gen de Riesgo + Aumento de Expresión) Aquí nos enfrentamos a una convergencia patogénica: el sujeto ya posee una carga genética desfavorable (OR > 1), y el metal actúa amplificando la señal de estos genes.
 
-&middot; Sinergia Tóxica ("Tormenta Perfecta"): Los genes en el cuadrante de Alto Riesgo (OR >1)  y Alta Fiabilidad (P-Value bajo) representan el escenario de sinergia tóxica. Al analizar los puntos más extremos en la derecha superior, se identifican genes cruciales:
+**2. Disrupción de la Resiliencia:** Bloqueo de la Neuroprotección (Gen Protector + Disminución de Expresión) Este mecanismo es fundamental para explicar la aparición de la enfermedad en individuos con una genética a priori favorable. El metal actúa anulando la ventaja biológica natural, silenciando la expresión de genes que deberían conferir resistencia (limpieza de amiloides, control inflamatorio). Básicamente, se trata de una pérdida de función exógena: el cerebro queda vulnerable no por falta de herramientas genéticas, sino porque el ambiente impide que estas se utilicen.
 
-- Gen Crítico 1: El gen [APOE (3.21)] se destaca como el gen de riesgo más potente al interactuar con [Methylmercuric Chloride]. Su posición extrema en la gráfica indica que la exposición a este químico amplifica significativamente la susceptibilidad genética.
+**3. Antagonismo Compensatorio:** Supresión de Vías Patogénicas (Gen de Riesgo + Disminución de Expresión) Observamos un fenómeno paradójico donde la exposición ambiental parece contrarrestar molecularmente el riesgo genético al reducir la presencia de un gen patogénico. 
 
+<<<<<<< HEAD
 - Gen Crítico 2: El gen [APOE (3.1)] también se encuentra en esta zona de peligro al interactuar con [Methylmercuric Chloride], confirmando que una de las variantes más conocidas para la EA es una diana molecular directa de los metales pesados.
 
 &middot; Defensa Rota ("Protección Anulada"): En el cuadrante de Factor Protector (OR < 1) y Alta Fiabilidad, se encuentran los genes cuya defensa es eliminada por el metal:
@@ -576,7 +558,11 @@ El análisis integrado de las interacciones genéticas y los compuestos tóxicos
 - Amplificación Ambiental: Los genes definidos como "villanos" genéticos son también las principales dianas moleculares de los metales pesados. El Methylmercuric Chloride (el agente de mayor impacto sistémico) actúa sobre una amplia red de genes de riesgo, generando el escenario de Sinergia Tóxica que amplifica la enfermedad.
 
 En conclusión, el análisis confirma que la exposición a metales pesados no es un factor de riesgo independiente para el Alzheimer, sino un catalizador que potencia la susceptibilidad genética preexistente.
+=======
+**4. Respuesta Adaptativa:** Potenciación de Defensas (Gen Protector + Aumento de Expresión) En estos casos, la presencia del metal desencadena una sobreexpresión de genes protectores. 
+>>>>>>> 8c3b2d9a395d5e4c5eb94d1e0d5daf0677b199bd
 
+Viendo todas estas situaciones y observando que en la grafica no se aprecia un patron significativo que nos indique que la exposición a estos metales vaya a aumentar el riesgo de desarrollar alzheimer, podemos concluir que no hay evidencia suficiente para afirmar que la exposición a Plomo o Mercurio modifique de manera significativa el riesgo genético de desarrollar Alzheimer.
 
 
 # Mortalidad por Parkinson y su relacion con los niveles de plomo y mercurio

@@ -63,9 +63,3 @@ dir.create("results", showWarnings = FALSE)
 nombre_archivo_salida <- "results/Analisis_Genes_Metales_Alzheimer_SoloOdds.csv"
 
 write_csv(df_combinado, nombre_archivo_salida)
-
-# Mensaje de confirmación
-cat("Proceso finalizado.\n")
-cat("Genes únicos con Odds Ratio válido:", n_distinct(df_combinado$mappedGenes), "\n")
-cat("Interacciones encontradas:", nrow(df_combinado), "\n")
-cat("Archivo guardado como:", nombre_archivo_salida, "\n")
