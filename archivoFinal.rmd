@@ -37,6 +37,9 @@ library(plotly)
 library(kableExtra)
 library(VennDiagram)
 library(grid)
+library(tidyjson)
+library(janitor)
+library(countrycode)
 ```
 # Introducción
 La prevalencia global de patologías neurodegenerativas como **Alzheimer** y **Parkinson** representa uno de los principales retos en biomedicina contemporánea. Diversos estudios epidemiológicos y moleculares han demostrado que ambos trastornos tienen una etiología multifactorial, en la que interactúan componentes genéticos, epigenéticos y ambientales.
@@ -410,6 +413,172 @@ El gráfico superior muestra la distribución de los genes implicados en la neur
 
 La intersección de 1069 genes revelada en el gráfico es un hallazgo clave, ya que indica una doble vulnerabilidad en el desarrollo del Alzheimer. Esta coincidencia sugiere que los genes de riesgo identificados por GWAS también son dianas moleculares de neurotóxicos como el Plomo y el Mercurio. Por lo tanto, la exposición ambiental tiene el potencial de modular o potenciar la susceptibilidad genética, dando la posibilidad de que el estrés tóxico active o intensifique las mismas vías biológicas defectuosas asociadas al riesgo genético, contribuyendo así a la patogénesis de la enfermedad.
 
+## Evaluación de la Toxicidad del Mercurio (Hg) y Plomo (Pb) en Variantes Genéticas Asociadas a Alzheimer.
+Este análisis busca identificar la superposición molecular exacta: aquellos genes que no solo tienen una asociación genética conocida con la enfermedad, sino que también son dianas moleculares documentadas de Pb o Hg. Esta coincidencia define una doble vulnerabilidad, lo que sugiere que la exposición ambiental podría intensificar las mismas vías biológicas defectuosas asociadas al riesgo genético.
+
+A continuación, la siguiente tabla resume la magnitud de esta doble vulnerabilidad al cuantificar los genes de riesgo únicos que cumplen ambas condiciones para cada patología.
+
+```{r genes-villanos-alzheimer, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+source("alzheimerMetalesGenes.R")
+
+
+# Renombrar 'df_combinado' (el resultado del source) a 'df_alzheimer' para el análisis:
+df_alzheimer <- df_combinado 
+
+# 2. Filtrar solo los "Villanos" (Genes de Riesgo: OR > 1)
+df_villanos_alz <- df_alzheimer %>%
+  filter(orValue > 1) %>%
+  # Contar la cantidad de genes de riesgo únicos afectados por cada químico
+  group_by(ChemicalName) %>%
+  summarise(
+    Genes_Afectados = n_distinct(mappedGenes),
+    .groups = 'drop'
+  ) %>%
+  # Ordenar de mayor a menor número de genes afectados
+  arrange(desc(Genes_Afectados))
+
+# 3. Generar el Gráfico de Barras (Ranking de Villanos)
+plot_villanos_alz <- ggplot(df_villanos_alz, 
+                             aes(x = reorder(ChemicalName, Genes_Afectados), 
+                                 y = Genes_Afectados,
+                                 fill = Genes_Afectados)) +
+  geom_bar(stat = "identity", width = 0.7) +
+  geom_text(aes(label = Genes_Afectados), vjust = -0.5, size = 4) +
+  labs(
+    title = "Ranking de Villanos: Compuestos Tóxicos que Afectan a Genes de Riesgo (Alzheimer)",
+    subtitle = "Número de Genes de Riesgo (OR > 1) con Interacción Demostrada por Compuesto Químico",
+    x = "Compuesto Químico (Hg/Pb)",
+    y = "Número de Genes de Riesgo Afectados"
+  ) +
+  scale_fill_gradient(low = "#CCEEFF", high = "#CC3333") + # Rojo para alto impacto
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, face = "bold"),
+    plot.title = element_text(face = "bold")
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  guides(fill = "none") # Quitar leyenda de color
+
+# Imprimir la gráfica para que se muestre en el R Markdown
+print(plot_villanos_alz)
+```
+
+A partir de este gráfico podemos realizar un análisis del ranking de Villanos. El análisis de impacto sistémico revela una clara jerarquía de toxicidad en la amplificación del riesgo genético del Alzheimer. De los 460 genes con Odds Ratio válido identificados en el conjunto de datos, se observa que los derivados orgánicos del mercurio son los principales agentes de riesgo.
+
+&middot; 1.-Villano Principal (Mercurio Orgánico): El compuesto con mayor impacto es el Methylmercuric Chloride, que interactúa con 179 genes de riesgo únicos, lo que confirma su amplio espectro de acción sobre la susceptibilidad genética de la enfermedad.
+
+&middot; 2.-Segundo Impacto Orgánico: Le sigue de cerca el Phenylmercuric Acetate, con 155 genes de riesgo afectados. El impacto combinado de estos dos derivados orgánicos del mercurio subraya que la forma química del contaminante es un factor determinante en la amplificación del riesgo.
+
+&middot; 3.-Riesgo Amplio del Plomo: Aunque es superado por los derivados orgánicos del mercurio, el Lead (Plomo) en su forma inorgánica sigue siendo un agente sistémico de alto riesgo, afectando a 105 genes de riesgo únicos.
+
+En conclusión, el Ranking de Villanos establece una jerarquía donde los derivados de Mercurio Orgánico representan la mayor amenaza en términos de amplitud de genes de riesgo afectados, informando nuestra hipótesis de que estos compuestos son los principales impulsores de la sinergia tóxica.
+
+otro gráfico: 
+```{r genes-interaccion-alzheimer-, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(ggrepel) # Para evitar que se superpongan las etiquetas
+library(plotly) # Para la interactividad
+# library(ggrepel) # No se necesita para plotly
+
+# Cargar el archivo de datos limpio de Alzheimer (asumiendo que está en inputs/)
+source("alzheimerMetalesGenes.R")
+
+# CORRECTIVO DE COLUMNAS: Aseguramos que las columnas clave se llamen correctamente.
+df_alzheimer <- df_alzheimer %>%
+  rename(
+    mappedGenes = any_of("mappedGenes"),      
+    orValue = any_of("orValue"),              
+    ChemicalName = any_of("ChemicalName")     
+  ) %>%
+  rename(
+    ChemicalName = any_of(c("chemicalName", "Chemical.Name", "Chemical name", "Chemical_Name")),
+    mappedGenes = any_of(c("MappedGenes", "mapped_genes", "GeneSymbol")),
+    orValue = any_of(c("orvalue", "OddsRatio"))
+  )
+
+# 1. Preparación de datos para el Plot de Impacto
+df_plot <- df_alzheimer %>%
+  # Calcular valores transformados para los ejes
+  mutate(
+    neg_log_pvalue = -log10(pValue),
+    log_or_value = log10(orValue),
+    # Creamos un texto personalizado para el tooltip
+    Tooltip_Text = paste(
+      "Gen:", mappedGenes, 
+      "<br>Químico:", ChemicalName, 
+      "<br>OR:", round(orValue, 3),
+      "<br>P-Value:", format.pval(pValue, digits = 2),
+      "<br>Acción:", InteractionActions
+    )
+  ) %>%
+  
+  # Clasificar las interacciones en zonas de riesgo 
+  mutate(
+    Zona_Impacto = case_when(
+      orValue > 1 & InteractionActions == "increase" ~ "Tormenta Perfecta (Sinergia Tóxica)",
+      orValue < 1 & InteractionActions == "decrease" ~ "Defensa Rota (Protección Anulada)",
+      orValue > 1 & InteractionActions == "decrease" ~ "Riesgo Mitigado",
+      orValue < 1 & InteractionActions == "increase" ~ "Protección Reducida",
+      TRUE ~ "Neutro"
+    )
+  )
+
+# 2. Crear el Scatter Plot base (ggplot)
+plot_base <- ggplot(df_plot, aes(x = log_or_value, y = neg_log_pvalue, color = Zona_Impacto, text = Tooltip_Text)) + # Usamos 'text' para el tooltip
+  geom_point(alpha = 0.7, size = 3) +
+  
+  # Líneas de referencia
+  geom_hline(yintercept = -log10(0.05), linetype = "dotted", color = "gray") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
+  
+  # Etiquetado y Temas
+  labs(
+    title = "Scatter Plot de Impacto: Riesgo Genético vs. Interacción con Metales (Alzheimer)",
+    subtitle = "El Cuadrante del Peligro (Interactivo)",
+    x = expression(log[10] * "(Odds Ratio - OR)"),
+    y = expression("-log"[10] * "(P-Value)"),
+    color = "Zona de Impacto"
+  ) +
+  theme_minimal() +
+  scale_color_manual(values = c(
+    "Tormenta Perfecta (Sinergia Tóxica)" = "#CC3333",          
+    "Defensa Rota (Protección Anulada)" = "#FF9933",            
+    "Riesgo Mitigado" = "skyblue",
+    "Protección Reducida" = "green"
+  ))
+
+# 3. Convertir a interactivo usando ggplotly
+ggplotly(plot_base, tooltip = "text")
+```
+
+Este Scatter Plot de Impacto permite priorizar el estudio de los genes más críticos en las zonas de peligro:
+
+&middot; Sinergia Tóxica ("Tormenta Perfecta"): Los genes en el cuadrante de Alto Riesgo (OR >1)  y Alta Fiabilidad (P-Value bajo) representan el escenario de sinergia tóxica. Al analizar los puntos más extremos en la derecha superior, se identifican genes cruciales:
+
+- Gen Crítico 1: El gen [APOE (3.21)] se destaca como el gen de riesgo más potente al interactuar con [Methylmercuric Chloride]. Su posición extrema en la gráfica indica que la exposición a este químico amplifica significativamente la susceptibilidad genética.
+
+- Gen Crítico 2: El gen [APOE (3.1)] también se encuentra en esta zona de peligro al interactuar con [Methylmercuric Chloride], confirmando que una de las variantes más conocidas para la EA es una diana molecular directa de los metales pesados.
+
+&middot; Defensa Rota ("Protección Anulada"): En el cuadrante de Factor Protector (OR < 1) y Alta Fiabilidad, se encuentran los genes cuya defensa es eliminada por el metal:
+
+- Gen Protector Clave: Se identifica el gen [APOE (0.502)] como un punto crítico. La interacción con [Methylmercuric Chloride] disminuye su expresión protectora, lo que constituye una vulnerabilidad adquirida por el medio ambiente.
+
+El análisis integrado de las interacciones genéticas y los compuestos tóxicos confirma la hipótesis de la Doble Vulnerabilidad en la patogénesis del Alzheimer:
+
+- Vulnerabilidad Genética (GWAS): El riesgo existe y es cuantificable a través del Odds Ratio.
+
+- Amplificación Ambiental: Los genes definidos como "villanos" genéticos son también las principales dianas moleculares de los metales pesados. El Methylmercuric Chloride (el agente de mayor impacto sistémico) actúa sobre una amplia red de genes de riesgo, generando el escenario de Sinergia Tóxica que amplifica la enfermedad.
+
+En conclusión, l análisis confirma que la exposición a metales pesados no es un factor de riesgo independiente para el Alzheimer, sino un catalizador que potencia la susceptibilidad genética preexistente.
+
+
+
 # Mortalidad por Parkinson y su relacion con los niveles de plomo y mercurio
 Esta pregunta resume un análisis exploratorio sobre la relación entre las concentraciones poblacionales de mercurio (Hg) y plomo (Pb) en sangre (percentil P50) y el número estimado de muertes por Parkinson por país y año.
 
@@ -550,7 +719,7 @@ grafico_relacion_temporal_parkinson
 ```
 
 
-## ¿Qué genes interactúan con Hg/Pb y cuántos de ellos coinciden con los genes con asociación en GWAS?
+## Evaluación de la Toxicidad del Mercurio (Hg) y Plomo (Pb) en Variantes Genéticas Asociadas a Parkinson.
 
 Tras analizar la superposición gen-ambiente en el contexto de la enfermedad de Alzheimer, extenderemos ahora este análisis a la Enfermedad de Parkinson (EP). El Parkinson, al igual que el Alzheimer, es una patología neurodegenerativa compleja donde la interacción entre la genética y los factores ambientales es crítica.Dado que el Plomo y el Mercurio son neurotóxicos reconocidos que interactúan con una amplia gama de proteínas, es crucial determinar si los genes que se conoce que interactúan con estos metales coinciden con los genes específicos implicados en la susceptibilidad al Parkinson identificados por los estudios GWAS
 
