@@ -575,7 +575,7 @@ El análisis integrado de las interacciones genéticas y los compuestos tóxicos
 
 - Amplificación Ambiental: Los genes definidos como "villanos" genéticos son también las principales dianas moleculares de los metales pesados. El Methylmercuric Chloride (el agente de mayor impacto sistémico) actúa sobre una amplia red de genes de riesgo, generando el escenario de Sinergia Tóxica que amplifica la enfermedad.
 
-En conclusión, l análisis confirma que la exposición a metales pesados no es un factor de riesgo independiente para el Alzheimer, sino un catalizador que potencia la susceptibilidad genética preexistente.
+En conclusión, el análisis confirma que la exposición a metales pesados no es un factor de riesgo independiente para el Alzheimer, sino un catalizador que potencia la susceptibilidad genética preexistente.
 
 
 
@@ -809,3 +809,141 @@ El gráfico superior muestra la distribución de los genes implicados en la neur
 &middot; Genes de Intersección: Se identificaron 174 genes que demuestran una doble vulnerabilidad: no solo están asociados a la susceptibilidad genética de la EP (GWAS), sino que también se conoce que interactúan directamente con el Plomo o el Mercurio.
 
 La intersección de 174 genes entre las dianas de Plomo/Mercurio (Pb/Hg) y los genes de riesgo de Parkinson (GWAS) es un hallazgo esencial. Esta doble vulnerabilidad sugiere que la exposición a estos metales pesados tiene el potencial de modular o potenciar la susceptibilidad genética a la enfermedad. El estrés tóxico inducido por los metales podría activar o intensificar las mismas vías biológicas defectuosas asociadas al riesgo genético, dando la posibilidad de contribuir a la patogénesis y progresión del Parkinson. 
+
+## Evaluación de la Toxicidad del Mercurio (Hg) y Plomo (Pb) en Variantes Genéticas Asociadas a Parkinson.
+Ahora vamos a extender el análisis de toxicidad gen-ambiente al contexto de la Enfermedad de Parkinson (EP). Al igual que en el Alzheimer, es crucial determinar si los genes que interactúan con el Plomo y el Mercurio coinciden con los genes específicos implicados en la susceptibilidad al Parkinson identificados por estudios GWAS.
+
+```{r genes-villanos-parkinson, echo=FALSE, message = FALSE, warning = FALSE, fig.width=9, fig.height=6}
+library(readr)
+library(dplyr)
+library(ggplot2)
+
+# 1. CARGAR DATOS: Ejecuta el script de Parkinson para obtener df_combinado
+source("parkinsonMetalesGenes.R")
+
+# Renombrar 'df_combinado' (el resultado del source) a 'df_parkinson' para el análisis:
+df_parkinson <- df_combinado
+
+# 2. Filtrar solo los "Villanos" (Genes de Riesgo: OR > 1)
+df_villanos_parkinson <- df_parkinson %>%
+  filter(orValue > 1) %>%
+  # Contar la cantidad de genes de riesgo únicos afectados por cada químico
+  group_by(ChemicalName) %>%
+  summarise(
+    Genes_Afectados = n_distinct(mappedGenes),
+    .groups = 'drop'
+  ) %>%
+  # Ordenar de mayor a menor número de genes afectados
+  arrange(desc(Genes_Afectados))
+
+# 3. Generar el Gráfico de Barras (Ranking de Villanos)
+plot_villanos_parkinson <- ggplot(df_villanos_parkinson,
+                                   aes(x = reorder(ChemicalName, Genes_Afectados),
+                                       y = Genes_Afectados,
+                                       fill = Genes_Afectados)) +
+  geom_bar(stat = "identity", width = 0.7) +
+  geom_text(aes(label = Genes_Afectados), vjust = -0.5, size = 4) +
+  labs(
+    title = "Ranking de Villanos: Compuestos Tóxicos que Afectan a Genes de Riesgo (Parkinson)",
+    subtitle = "Número de Genes de Riesgo (OR > 1) con Interacción Demostrada por Compuesto Químico",
+    x = "Compuesto Químico (Hg/Pb)",
+    y = "Número de Genes de Riesgo Afectados"
+  ) +
+  scale_fill_gradient(low = "#CCEEFF", high = "#CC3333") +
+  theme_minimal() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1, face = "bold"),
+    plot.title = element_text(face = "bold")
+  ) +
+  scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
+  guides(fill = "none")
+
+# Imprimir la gráfica para que se muestre en el R Markdown
+print(plot_villanos_parkinson)
+```
+
+El análisis del impacto sistémico para el Parkinson revela una jerarquía de toxicidad similar a la del Alzheimer, aunque con diferencias notables en la cantidad de genes afectados. De los [CANTIDAD TOTAL DE GENES CON OR VÁLIDO] genes de riesgo válidos identificados, se concluye que:
+
+&middot; 1.- Villano Principal : El compuesto con mayor impacto es el Methylmercuric Chloride, que interactúa con 39 genes de riesgo únicos, destacando su amplio espectro de acción sobre la susceptibilidad genética del Parkinson.
+
+&middot; 2.-Riesgo Amplio: El [Phenylmercuric Acetate] también ejerce una amenaza significativa, con [36] genes.
+
+En conclusión, el patrón de riesgo genético para el Parkinson también está dominado por los derivados orgánicos del mercurio, lo que sugiere un mecanismo de neurotoxicidad compartido con el Alzheimer en la fase de amplificación del riesgo.
+
+Segundo gráfico 
+
+```{r genes-interaccion-parkinson, echo=FALSE, message = FALSE, warning = FALSE, fig.width=9, fig.height=6}
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(plotly) # Para la interactividad
+# La función source("parkinsonMetalesGenes.R") ya fue ejecutada en el chunk anterior y creó df_parkinson
+
+# 1. Preparación de datos para el Plot de Impacto
+df_plot_park <- df_parkinson %>%
+  # Calcular valores transformados para los ejes
+  mutate(
+    neg_log_pvalue = -log10(pValue),
+    log_or_value = log10(orValue),
+    # Creamos un texto personalizado para el tooltip
+    Tooltip_Text = paste(
+      "Gen:", mappedGenes,
+      "<br>Químico:", ChemicalName,
+      "<br>OR:", round(orValue, 3),
+      "<br>P-Value:", format.pval(pValue, digits = 2),
+      "<br>Acción:", InteractionActions
+    )
+  ) %>%
+
+  # Clasificar las interacciones en zonas de riesgo
+  mutate(
+    Zona_Impacto = case_when(
+      orValue > 1 & InteractionActions == "increase" ~ "Tormenta Perfecta (Sinergia Tóxica)",
+      orValue < 1 & InteractionActions == "decrease" ~ "Defensa Rota (Protección Anulada)",
+      orValue > 1 & InteractionActions == "decrease" ~ "Riesgo Mitigado",
+      orValue < 1 & InteractionActions == "increase" ~ "Protección Reducida",
+      TRUE ~ "Neutro"
+    )
+  )
+
+# 2. Crear el Scatter Plot base (ggplot)
+plot_base_park <- ggplot(df_plot_park, aes(x = log_or_value, y = neg_log_pvalue, color = Zona_Impacto, text = Tooltip_Text)) +
+  geom_point(alpha = 0.7, size = 3) +
+
+  # Líneas de referencia
+  geom_hline(yintercept = -log10(0.05), linetype = "dotted", color = "gray") +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "gray50") +
+
+  # Etiquetado y Temas
+  labs(
+    title = "Scatter Plot de Impacto: Riesgo Genético vs. Interacción con Metales (Parkinson)",
+    subtitle = "El Cuadrante del Peligro (Interactivo)",
+    x = expression(log[10] * "(Odds Ratio - OR)"),
+    y = expression("-log"[10] * "(P-Value)"),
+    color = "Zona de Impacto"
+  ) +
+  theme_minimal() +
+  scale_color_manual(values = c(
+    "Tormenta Perfecta (Sinergia Tóxica)" = "#CC3333",
+    "Defensa Rota (Protección Anulada)" = "#FF9933",
+    "Riesgo Mitigado" = "skyblue",
+    "Protección Reducida" = "green"
+  ))
+
+# 3. Convertir a interactivo usando ggplotly
+ggplotly(plot_base_park, tooltip = "text")
+```
+
+El Scatter Plot de Impacto para el Parkinson permite identificar los puntos calientes de la interacción gen-metal, priorizando los genes de alta fiabilidad.
+
+&middot; Sinergia Tóxica ("Tormenta Perfecta"): Los puntos extremos en la Derecha Superior ({OR} > 1 y ({P}-Value bajo) indican los siguientes hallazgos de alto impacto:
+
+- Gen Crítico 1: El gen [SNCA (1.33)] se destaca como el gen de riesgo más potente, interactuando con [Mercuric Bromide]. Su fuerte correlación es una evidencia directa de que la exposición amplifica la susceptibilidad a la EP.
+
+- Gen Crítico 2: El gen [SNCA (1.32)], otra variante conocida de la EP, también se posiciona en la zona de peligro al interactuar con [Mercuric Bromide].
+
+&middot; Defensa Rota ("Protección Anulada"): Los puntos en la Izquierda Superior (OR < 1 y (P-Value bajo) revelan la vulnerabilidad de los genes protectores:
+
+- Gen Protector Clave: El gen [CARS2] es un punto crítico. La interacción con [Methlylmercuric chloride] disminuye su expresión protectora, lo que constituye una vulnerabilidad adquirida por el medio ambiente.
+
+Como conclusión, la exposición a derivados orgánicos del mercurio y plomo no es un factor de riesgo independiente, sino un catalizador que potencia la susceptibilidad genética preexistente a la EP. El control de la exposición a estos contaminantes es fundamental para mitigar el riesgo de Parkinson en individuos genéticamente susceptibles.
