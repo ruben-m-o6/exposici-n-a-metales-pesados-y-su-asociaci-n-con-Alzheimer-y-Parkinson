@@ -396,4 +396,4 @@ Este proyecto está bajo la licencia **MIT**. Ver archivo [`LICENSE`](LICENSE) p
 
 - **Autor:** Rubén M. ([@ruben-m-o6](https://github.com/ruben-m-o6))
 - **Autor:** Álvaro C. ([@Acp1038])
-- **Autor:** Adrian O  ([(AdriiannOrive]).
+- **Autor:** Adrian O  ([(AdriiannOrive](https://github.com/AdriiannOrive))
