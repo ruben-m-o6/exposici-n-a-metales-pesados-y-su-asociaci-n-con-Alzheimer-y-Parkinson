@@ -116,7 +116,7 @@ temporal_plot
 ```
 Como podemos observar en los gráficos que se observan en la parte superior, hay casos distintos para los metales que estamos analizando. 
 
-En el caso del Plomo (Pb), hay una clara disminución de la concentración de plomo en sangre (P50) en todos los paisses con múltiples mediciones a lo largo de los años.Esto es un reflejo del éxito de las políticas de salud pública y las regulaciones ambientales. Para nuestro estudio este descenso es el principal factor de confusión que explica la relación negativa y contraintuitiva en los gráficos de dispersión. Vemos como la exposición al Plomo no se ha mantenido estable, sino que ha caido drásticamente debido a factores externos
+En el caso del Plomo (Pb), hay una clara disminución de la concentración de plomo en sangre (P50) en todos los paises con múltiples mediciones a lo largo de los años.Esto es un reflejo del éxito de las políticas de salud pública y las regulaciones ambientales. Para nuestro estudio este descenso es el principal factor de confusión que explica la relación negativa y contraintuitiva en los gráficos de dispersión. Vemos como la exposición al Plomo no se ha mantenido estable, sino que ha caido drásticamente debido a factores externos
 
 Si hablamos del Mercurio, podemos comprobar que la exposición del Mercurio es mucho más estable a lo largo del tiempo, con una disminución más gradual y ligera en países como la República Checa y Alemania. La falta de una caída dramática sugiere que los factores regulatorios operan de manera diferente.
 
