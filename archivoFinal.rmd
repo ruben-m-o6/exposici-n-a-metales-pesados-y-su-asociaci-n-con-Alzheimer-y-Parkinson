@@ -59,25 +59,18 @@ La metodología seguida en este estudio incluye la recopilación y filtrado de d
 ## Mapa de los países del estudio
 ```{r mapa-europa, message=FALSE, warning=FALSE}
 # Descargar datos de Europa
-# (Usamos scale = "large" para mejor definición de las costas)
 europa <- ne_countries(continent = "Europe", scale = "medium", returnclass = "sf")
 
-# Los países a marcar
-# Nota: Cambiado "Czech Republic" a "Czechia" que es más común en los datos
 paises_estudio <- c("Germany", "Spain", "Belgium", "Czechia", "Norway", "Slovenia")
 
 # Añadir columna para destacar países
 europa <- europa %>%
   mutate(Estudio = ifelse(name %in% paises_estudio, "Estudio", "Otros"))
 
-# --- Graficar con la proyección corregida ---
 ggplot(europa) +
   geom_sf(aes(fill = Estudio), color = "gray30", linewidth = 0.2) +
   scale_fill_manual(values = c("Estudio" = "#ED7D31", "Otros" = "lightgray")) +
   
-  # --- ESTA ES LA PARTE CLAVE ---
-  # Define una proyección (CRS) centrada en Europa (EPSG:3035)
-  # y establece límites para "hacer zoom" y recortar las partes lejanas.
   coord_sf(
     crs = st_crs(3035),
     xlim = c(2500000, 6000000),
@@ -141,8 +134,6 @@ plot_pb <- ggplot(df_pb, aes(x = value, y = numero_muertes,
                            label = country, year = year)) + # Añadimos info para el tooltip
   geom_point(aes(color = country), size = 3) +
   geom_smooth(method = "lm", color = "black", se = FALSE) +
-  # ggrepel es genial para estático, pero lo quitamos para plotly
-  # geom_text_repel(aes(label = paste(country, year, sep = "-")), size = 2.5) +
   labs(
     title = "Correlación entre Plomo (Pb P50) y Muertes por Alzheimer",
     y = "Número Estimado de Muertes",
@@ -155,7 +146,6 @@ plot_hg <- ggplot(df_hg, aes(x = value, y = numero_muertes,
                            label = country, year = year)) + # Añadimos info para el tooltip
   geom_point(aes(color = country), size = 3) +
   geom_smooth(method = "lm", color = "black", se = FALSE) +
-  # geom_text_repel(aes(label = paste(country, year, sep = "-")), size = 2.5) +
   labs(
     title = "Correlación entre Mercurio (Hg P50) y Muertes por Alzheimer",
     y = "Número Estimado de Muertes",
@@ -163,7 +153,7 @@ plot_hg <- ggplot(df_hg, aes(x = value, y = numero_muertes,
   ) +
   theme_bw()
 
-# 4. Imprimimos los gráficos con plotly (¡pasa el ratón por encima!)
+# 4. Imprimimos los gráficos con plotly 
 # ggplotly los convierte en interactivos
 ggplotly(plot_pb)
 ggplotly(plot_hg)
@@ -414,15 +404,15 @@ Este análisis busca identificar la superposición molecular exacta: aquellos ge
 
 A continuación, la siguiente tabla resume la magnitud de esta doble vulnerabilidad al cuantificar los genes de riesgo únicos que cumplen ambas condiciones para cada patología.
 
-```{r genes-villanos-alzheimer, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}
+```{r genes-nocivos-alzheimer, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}
 
 source("filtradoDatos/alzheimerMetalesGenes.R")
 
 # Renombrar 'df_combinado' (el resultado del source) a 'df_alzheimer' para el análisis:
 df_alzheimer <- df_combinado 
 
-# 2. Filtrar solo los "Villanos" (Genes de Riesgo: OR > 1)
-df_villanos_alz <- df_alzheimer %>%
+# 2. Filtrar solo los genes nocivos (Genes de Riesgo: OR > 1)
+df_nocivos_alz <- df_alzheimer %>%
   filter(orValue > 1) %>%
   # Contar la cantidad de genes de riesgo únicos afectados por cada químico
   group_by(ChemicalName) %>%
@@ -433,15 +423,15 @@ df_villanos_alz <- df_alzheimer %>%
   # Ordenar de mayor a menor número de genes afectados
   arrange(desc(Genes_Afectados))
 
-# 3. Generar el Gráfico de Barras (Ranking de Villanos)
-plot_villanos_alz <- ggplot(df_villanos_alz, 
+# 3. Generar el Gráfico de Barras 
+plot_nocivos_alz <- ggplot(df_nocivos_alz, 
                              aes(x = reorder(ChemicalName, Genes_Afectados), 
                                  y = Genes_Afectados,
                                  fill = Genes_Afectados)) +
   geom_bar(stat = "identity", width = 0.7) +
   geom_text(aes(label = Genes_Afectados), vjust = -0.5, size = 4) +
   labs(
-    title = "Ranking de Villanos: Compuestos Tóxicos que Afectan a Genes de Riesgo (Alzheimer)",
+    title = "Ranking de genes nocivos: Compuestos Tóxicos que Afectan a Genes de Riesgo (Alzheimer)",
     subtitle = "Número de Genes de Riesgo (OR > 1) con Interacción Demostrada por Compuesto Químico",
     x = "Compuesto Químico (Hg/Pb)",
     y = "Número de Genes de Riesgo Afectados"
@@ -456,10 +446,10 @@ plot_villanos_alz <- ggplot(df_villanos_alz,
   guides(fill = "none") # Quitar leyenda de color
 
 # Imprimir la gráfica para que se muestre en el R Markdown
-print(plot_villanos_alz)
+print(plot_nocivos_alz)
 ```
 
-A partir de este gráfico podemos realizar un análisis del ranking de Villanos. El análisis de impacto sistémico revela una clara jerarquía de toxicidad en la amplificación del riesgo genético del Alzheimer. De los 460 genes con Odds Ratio válido identificados en el conjunto de datos, se observa que los derivados orgánicos del mercurio son los principales agentes de riesgo.
+A partir de este gráfico podemos realizar un análisis del ranking de genes nocivos. El análisis de impacto sistémico revela una clara jerarquía de toxicidad en la amplificación del riesgo genético del Alzheimer. De los 460 genes con Odds Ratio válido identificados en el conjunto de datos, se observa que los derivados orgánicos del mercurio son los principales agentes de riesgo.
 
 &middot; 1.-Villano Principal (Mercurio Orgánico): El compuesto con mayor impacto es el Methylmercuric Chloride, que interactúa con 179 genes de riesgo únicos, lo que confirma su amplio espectro de acción sobre la susceptibilidad genética de la enfermedad.
 
@@ -467,7 +457,7 @@ A partir de este gráfico podemos realizar un análisis del ranking de Villanos.
 
 &middot; 3.-Riesgo Amplio del Plomo: Aunque es superado por los derivados orgánicos del mercurio, el Lead (Plomo) en su forma inorgánica sigue siendo un agente sistémico de alto riesgo, afectando a 105 genes de riesgo únicos.
 
-En conclusión, el Ranking de Villanos establece una jerarquía donde los derivados de Mercurio Orgánico representan la mayor amenaza en términos de amplitud de genes de riesgo afectados, informando nuestra hipótesis de que estos compuestos son los principales impulsores de la sinergia tóxica.
+En conclusión, el Ranking de genes nocivos establece una jerarquía donde los derivados de Mercurio Orgánico representan la mayor amenaza en términos de amplitud de genes de riesgo afectados, informando nuestra hipótesis de que estos compuestos son los principales impulsores de la sinergia tóxica.
 
 ### ¿Implica la exposion a un metal directamente que vaya a haber un aumento de desarrollar alzheimer?
 ```{r genes-interaccion-alzheimer-, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}
@@ -727,7 +717,7 @@ La intersección de 174 genes entre las dianas de Plomo/Mercurio (Pb/Hg) y los g
 ## Evaluación de la Toxicidad del Mercurio (Hg) y Plomo (Pb) en Variantes Genéticas Asociadas a Parkinson.  
 Ahora vamos a extender el análisis de toxicidad gen-ambiente al contexto de la Enfermedad de Parkinson (EP). Al igual que en el Alzheimer, es crucial determinar si los genes que interactúan con el Plomo y el Mercurio coinciden con los genes específicos implicados en la susceptibilidad al Parkinson identificados por estudios GWAS.
 
-```{r genes-villanos-parkinson, echo=FALSE, message = FALSE, warning = FALSE, fig.width=9, fig.height=6}
+```{r genes-nocivos-parkinson, echo=FALSE, message = FALSE, warning = FALSE, fig.width=9, fig.height=6}
 
 
 # 1. CARGAR DATOS: Ejecuta el script de Parkinson para obtener df_combinado
@@ -736,8 +726,8 @@ source("filtradoDatos/parkinsonMetalesGenes.R")
 # Renombrar 'df_combinado' (el resultado del source) a 'df_parkinson' para el análisis:
 df_parkinson <- df_combinado
 
-# 2. Filtrar solo los "Villanos" (Genes de Riesgo: OR > 1)
-df_villanos_parkinson <- df_parkinson %>%
+# 2. Filtrar solo los genes nocivos (Genes de Riesgo: OR > 1)
+df_nocivos_parkinson <- df_parkinson %>%
   filter(orValue > 1) %>%
   # Contar la cantidad de genes de riesgo únicos afectados por cada químico
   group_by(ChemicalName) %>%
@@ -748,15 +738,15 @@ df_villanos_parkinson <- df_parkinson %>%
   # Ordenar de mayor a menor número de genes afectados
   arrange(desc(Genes_Afectados))
 
-# 3. Generar el Gráfico de Barras (Ranking de Villanos)
-plot_villanos_parkinson <- ggplot(df_villanos_parkinson,
+# 3. Generar el Gráfico de Barras 
+plot_nocivos_parkinson <- ggplot(df_nocivos_parkinson,
                                    aes(x = reorder(ChemicalName, Genes_Afectados),
                                        y = Genes_Afectados,
                                        fill = Genes_Afectados)) +
   geom_bar(stat = "identity", width = 0.7) +
   geom_text(aes(label = Genes_Afectados), vjust = -0.5, size = 4) +
   labs(
-    title = "Ranking de Villanos: Compuestos Tóxicos que Afectan a Genes de Riesgo (Parkinson)",
+    title = "Ranking de genes nocivos: Compuestos Tóxicos que Afectan a Genes de Riesgo (Parkinson)",
     subtitle = "Número de Genes de Riesgo (OR > 1) con Interacción Demostrada por Compuesto Químico",
     x = "Compuesto Químico (Hg/Pb)",
     y = "Número de Genes de Riesgo Afectados"
@@ -771,10 +761,10 @@ plot_villanos_parkinson <- ggplot(df_villanos_parkinson,
   guides(fill = "none")
 
 # Imprimir la gráfica para que se muestre en el R Markdown
-print(plot_villanos_parkinson)
+print(plot_nocivos_parkinson)
 ```
 
-El análisis del impacto sistémico para el Parkinson revela una jerarquía de toxicidad similar a la del Alzheimer, aunque con diferencias notables en la cantidad de genes afectados. De los `r sum(df_villanos_parkinson$Genes_Afectados)` genes de riesgo válidos identificados, se concluye que:
+El análisis del impacto sistémico para el Parkinson revela una jerarquía de toxicidad similar a la del Alzheimer, aunque con diferencias notables en la cantidad de genes afectados. De los `r sum(df_nocivos_parkinson$Genes_Afectados)` genes de riesgo válidos identificados, se concluye que:
 
 &middot; 1.- Villano Principal : El compuesto con mayor impacto es el Methylmercuric Chloride, que interactúa con 39 genes de riesgo únicos, destacando su amplio espectro de acción sobre la susceptibilidad genética del Parkinson.
 
