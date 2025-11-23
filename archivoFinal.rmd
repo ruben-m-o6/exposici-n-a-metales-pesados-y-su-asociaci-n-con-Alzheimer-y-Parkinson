@@ -209,18 +209,18 @@ Ambos analisis concuerdan con lo visto en los graficos anteriores.
 ## ¿Cómo evolucionan los niveles de Plomo/Mercurio y las muertes por Alzheimer a lo largo del tiempo?
 
 El segundo paso, es probar si existe algún tipo de correlación entre la evolución temporal de la exposición y el número de muertes por Alzheimer. Para ello, vamos a crear un gráfico de dispersión similar a los anteriores, pero en este caso, vamos a conectar los puntos de cada país con flechas que indiquen la dirección temporal (de años más antiguos a más recientes). Esto nos permitirá visualizar cómo ha cambiado la relación entre la exposición y las muertes a lo largo del tiempo.
-
+# Ajustamos el tamaño de la figura
 ```{r grafico-relacion-alzheimer-Plomo, fig.width=9, fig.height=6}
 
 
-
+#  Filtrar datos: nos quedamos solo con plomo (Pb) y países con más de un año de información
 df_pb_multi_year_alz <- df %>%
   filter(metal == "Pb") %>%
   group_by(country) %>%
   filter(n() > 1) %>% 
   ungroup()
 
-
+#  Escalar las muertes para poder compararlas en la misma gráfica con los niveles de plomo
 df_scaled_alz <- df_pb_multi_year_alz %>%
   group_by(country) %>%
   mutate(
@@ -229,18 +229,19 @@ df_scaled_alz <- df_pb_multi_year_alz %>%
   ) %>%
   ungroup()
 
-
+#  Crear el gráfico con ggplot
 p_combined_trends_alz <- ggplot(df_scaled_alz, aes(x = year, group = country)) +
-  
+  # Línea y puntos para plomo (Pb)
   geom_line(aes(y = value, color = country, linetype = "Plomo (Pb)"), size = 1) +
   geom_point(aes(y = value, color = country, 
                  text = paste("País:", country, "<br>Año:", year, "<br>Plomo (P50):", round(value, 2), "µg/L")), 
              size = 3) +
-
+  # Línea y puntos para muertes por Alzheimer 
   geom_line(aes(y = scaled_muertes, color = country, linetype = "Muertes Alzheimer (Escalado)"), size = 1, alpha = 0.7) +
   geom_point(aes(y = scaled_muertes, color = country, 
                  text = paste("País:", country, "<br>Año:", year, "<br>Muertes Alzheimer:", round(actual_muertes, 0), "<br>Muertes (Escalado):", round(scaled_muertes, 2))), 
              size = 3, alpha = 0.7) +
+  # Panel separado para cada país
   facet_wrap(~ country, scales = "free_y", ncol = 2) + 
   scale_linetype_manual(name = "Métrica", values = c("Plomo (Pb)" = "solid", "Muertes Alzheimer (Escalado)" = "dashed")) +
   labs(
@@ -250,27 +251,28 @@ p_combined_trends_alz <- ggplot(df_scaled_alz, aes(x = year, group = country)) +
     x = "Año",
     color = "País"
   ) +
+  # Tema visual
   theme_bw() +
   theme(legend.position = "bottom",
         plot.title = element_text(face = "bold"),
         strip.text = element_text(face = "bold"))
 
-
+#  Convertir el gráfico en interactivo con plotly 
 ggplotly(p_combined_trends_alz, tooltip = "text")
 ```
 
 En el gráfico anterior podemos acabar de concluir lo que se puede intuir en el anterior y demostrando que lo que se menciona en gráficos superiores esta en lo correcto. Debido a que el Plomo disminuye mientras que las muertes aumentan simultáneamente a lo largo del tiempo, y como se mencionaba anteriormente se establece una Correlación Negativa (a mayor cantidad de plomo, menor número de muertes), lo cuál es lo opuesto a lo esperado cuando estamos hablando de una neurotoxina que puede resultar perjudicial en otros muchos aspectos. El patrón que hemos observado es crucial porque demuestra que la correlación entre estas dos variables y la mortalidad no es una simple relación causal biológica, sino un mero artefacto estadístico impulsado por el factor de confusión demográfico que enmascara cualquier posible efecto de los metales
-
+# Ajustamos el tamaño de la figura
 ````{r grafico-relacion-alzheimer-Mercurio, fig.width=9, fig.height=6}
 
-
+#  Filtrar datos: nos quedamos solo con Mercurio (Hg) y países con más de un año de información
 df_hg_multi_year_alz <- df %>%
   filter(metal == "Hg") %>%
   group_by(country) %>%
   filter(n() > 1) %>% 
   ungroup()
 
-
+#  Escalar las muertes para poder compararlas en la misma gráfica con los niveles de mercurio
 df_scaled_hg_alz <- df_hg_multi_year_alz %>%
   group_by(country) %>%
   mutate(
@@ -279,7 +281,7 @@ df_scaled_hg_alz <- df_hg_multi_year_alz %>%
   ) %>%
   ungroup()
 
-
+#  Crear el gráfico con ggplot
 p_combined_trends_hg_alz <- ggplot(df_scaled_hg_alz, aes(x = year, group = country)) +
 
   geom_line(aes(y = value, color = country, linetype = "Mercurio (Hg)"), size = 1) +
@@ -300,12 +302,13 @@ p_combined_trends_hg_alz <- ggplot(df_scaled_hg_alz, aes(x = year, group = count
     x = "Año",
     color = "País"
   ) +
+  # Tema visual
   theme_bw() +
   theme(legend.position = "bottom",
         plot.title = element_text(face = "bold"),
         strip.text = element_text(face = "bold"))
 
-
+#  Convertir el gráfico en interactivo con plotly
 ggplotly(p_combined_trends_hg_alz, tooltip = "text")
 ````
 
@@ -319,6 +322,7 @@ Una de las áreas clave dentro de la investigación de enfermedades como el Alzh
 Primeramente, vamos a identificar los genes que interactúan con el Plomo y con el Mercurio y a su vez los vamos a extraer y unificar estos genes que interactuan con los metales, según si estan asociados con genes en estudios GWAS
 
 ```{r genes-interactuan-metales, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}  
+# Función para limpiar la lista de genes:
 limpiar_genes <- function(df) {
   df %>%
     separate_rows(mappedGenes, sep = ',') %>%
@@ -327,12 +331,13 @@ limpiar_genes <- function(df) {
     pull(mappedGenes) %>%
     unique()
 }
-
+# Leer los archivos con datos de metales pesados y genes asociados a Alzheimer
 df_metales <- read_csv("input/metales_pesados.csv")
 df_alzheimer <- read_csv("input/genesAlzheimerFiltrado.csv")
 
-
+# Palabras clave para identificar plomo y mercurio
 keywords_metales <- c('lead', 'Pb', 'mercury', 'mercuric', 'Hg', 'plomo', 'mercurio')
+# Seleccionar genes relacionados con Pb/Hg en el dataset de metales
 set_metales_pbhg <- df_metales %>%
   
   filter(str_detect(ChemicalName, regex(paste(keywords_metales, collapse = '|'), ignore_case = TRUE))) %>%
@@ -343,7 +348,7 @@ set_metales_pbhg <- df_metales %>%
   na.omit() %>%
   as.character()
 
-
+# Limpiar y obtener genes asociados a Alzheimer desde el dataset
 set_alzheimer_gwas <- limpiar_genes(df_alzheimer)
 
 # Calcular tamaños para cada sección
@@ -351,7 +356,7 @@ interseccion_size <- length(intersect(set_metales_pbhg, set_alzheimer_gwas))
 solo_pbhg_size <- length(set_metales_pbhg) - interseccion_size
 solo_alzheimer_size <- length(set_alzheimer_gwas) - interseccion_size
 
-# Crear un dataframe para ggplot2
+# Crear un dataframe para graficar con ggplot2
 df_plot_data <- tibble(
   Categoria = factor(c("Genes solo con Pb/Hg\n(Neurotoxicidad)", 
                         "Genes solo con Alzheimer\n(GWAS)", 
@@ -362,7 +367,7 @@ df_plot_data <- tibble(
   Cantidad = c(solo_pbhg_size, solo_alzheimer_size, interseccion_size)
 )
 
-# --- 3. GENERACIÓN DEL GRÁFICO DE BARRAS ---
+# Generar grafico de barras
 
 p <- ggplot(df_plot_data, aes(x = Categoria, y = Cantidad, fill = Categoria)) +
   geom_bar(stat = "identity", width = 0.7) + # Ajusta el ancho de las barras
@@ -384,7 +389,7 @@ p <- ggplot(df_plot_data, aes(x = Categoria, y = Cantidad, fill = Categoria)) +
     legend.position = "none"
   ) +
   ylim(0, max(df_plot_data$Cantidad) * 1.1)
-  
+# Mostrar el gráfico  
 print(p)
 
 ```
@@ -405,13 +410,13 @@ Este análisis busca identificar la superposición molecular exacta: aquellos ge
 A continuación, la siguiente tabla resume la magnitud de esta doble vulnerabilidad al cuantificar los genes de riesgo únicos que cumplen ambas condiciones para cada patología.
 
 ```{r genes-nocivos-alzheimer, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}
-
+#  Cargar el script que prepara los datos combinados
 source("filtradoDatos/alzheimerMetalesGenes.R")
 
-# Renombrar 'df_combinado' (el resultado del source) a 'df_alzheimer' para el análisis:
+# Renombrar el resultado del script a 'df_alzheimer' para trabajar con él
 df_alzheimer <- df_combinado 
 
-# 2. Filtrar solo los genes nocivos (Genes de Riesgo: OR > 1)
+#  Filtrar solo los genes considerados de riesgo (OR > 1)
 df_nocivos_alz <- df_alzheimer %>%
   filter(orValue > 1) %>%
   # Contar la cantidad de genes de riesgo únicos afectados por cada químico
@@ -423,7 +428,7 @@ df_nocivos_alz <- df_alzheimer %>%
   # Ordenar de mayor a menor número de genes afectados
   arrange(desc(Genes_Afectados))
 
-# 3. Generar el Gráfico de Barras 
+#  Crear gráfico de barras con ggplot
 plot_nocivos_alz <- ggplot(df_nocivos_alz, 
                              aes(x = reorder(ChemicalName, Genes_Afectados), 
                                  y = Genes_Afectados,
@@ -445,7 +450,7 @@ plot_nocivos_alz <- ggplot(df_nocivos_alz,
   scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
   guides(fill = "none") # Quitar leyenda de color
 
-# Imprimir la gráfica para que se muestre en el R Markdown
+# 4. Mostrar el gráfico
 print(plot_nocivos_alz)
 ```
 
@@ -461,9 +466,10 @@ En conclusión, el Ranking de genes nocivos establece una jerarquía donde los d
 
 ### ¿Implica la exposion a un metal directamente que vaya a haber un aumento de desarrollar alzheimer?
 ```{r genes-interaccion-alzheimer-, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}
+#  Leer los datos de interacciones entre metales y genes relacionados con Alzheimer
 df <- read.csv("results/Analisis_Genes_Metales_Alzheimer_SoloOdds.csv", stringsAsFactors = FALSE)
 
-# 2. Procesamiento de datos
+#  Procesamiento de datos
 df_clean <- df %>%
   mutate(Metal_Effect = case_when(
     grepl("increases\\^expression", InteractionActions) & !grepl("decreases\\^expression", InteractionActions) ~ "Metal Aumenta Expresión",
@@ -491,7 +497,7 @@ df_clean <- df %>%
     )
   )
 
-# 3. Generar el gráfico estático (ggplot)
+# 3. Crear el gráfico estático con ggplot
 
 p <- ggplot(df_clean, aes(x = LogOR, y = LogP, color = Scenario, text = hover_text)) +
   geom_point(alpha = 0.6, size = 2) +
@@ -515,8 +521,8 @@ p <- ggplot(df_clean, aes(x = LogOR, y = LogP, color = Scenario, text = hover_te
     strip.text = element_text(size = 10, face = "bold")
   )
 
-# 4. Convertir a interactivo con plotly
-# 'tooltip = "text"' le dice que use solo nuestra columna personalizada
+# 4. Convertir el gráfico en interactivo con plotly
+# 'tooltip = "text"' asegura que se muestre nuestro texto personalizado al pasar el ratón
 ggplotly(p, tooltip = "text")
 ```
 
@@ -540,11 +546,11 @@ Nota importante: la variable `numero_muertes` no es un conteo exacto sino una es
 
 Vamos a ver esto mediante un gráfico de dispersión con línea de regresión, separado en dos gráficos (uno para Hg y otro para Pb). Cada gráfico mostrará el número de muertes en el eje Y y el nivel del metal en el eje X.
 ```{r plot-correlaciones2, echo=FALSE, fig.width=10}
-# 1. Separar los datos
+# Separar los datos en dos grupos: uno para Plomo (Pb) y otro para Mercurio (Hg)
 df_pb2 <- filter(df2, metal == "Pb")
 df_hg2 <- filter(df2, metal == "Hg")
 
-# 2. Gráfico para Plomo (Pb)
+# 2. Crear el gráfico para Plomo (Pb)
 plot_pb2 <- ggplot(df_pb2, aes(x = value, y = numero_muertes,
                              label = country, year = year)) + # Info para tooltip
   geom_point(aes(color = country), size = 3) +
@@ -556,7 +562,7 @@ plot_pb2 <- ggplot(df_pb2, aes(x = value, y = numero_muertes,
   ) +
   theme_bw()
 
-# 3. Gráfico para Mercurio (Hg)
+#  Crear el gráfico para Mercurio (Hg)
 plot_hg2 <- ggplot(df_hg2, aes(x = value, y = numero_muertes,
                              label = country, year = year)) + # Info para tooltip
   geom_point(aes(color = country), size = 3) +
@@ -568,7 +574,7 @@ plot_hg2 <- ggplot(df_hg2, aes(x = value, y = numero_muertes,
   ) +
   theme_bw()
 
-# 4. Imprimimos los gráficos con plotly
+#  Convertir los gráficos en interactivos con plotly
 ggplotly(plot_pb2)
 ggplotly(plot_hg2)
 ```
@@ -595,19 +601,19 @@ En este caso, la línea de regresión negra muestra una **ligera pendiente posit
 ## ANALISIS NUMERICO
 
 ```{r}
-# 1. Separar los datos
+#  Separar los datos en dos grupos: uno con Plomo (Pb) y otro con Mercurio (Hg)
 df_pb_parkinson <- filter(df2, metal == "Pb")
 df_hg_parkinson <- filter(df2, metal == "Hg")
 
-# 2. Correr los modelos lineales
+#  Ajustar modelos lineales simples:
 modelo_pb2 <- lm(numero_muertes ~ value, data = df_pb_parkinson)
 modelo_hg2 <- lm(numero_muertes ~ value, data = df_hg_parkinson)
 
-# 3. Presentar los resultados en una tabla limpia
+#  Convertir los resultados de los modelos en tablas ordenadas
 tabla_pb2 <- tidy(modelo_pb2)
 tabla_hg2 <- tidy(modelo_hg2)
 
-# Usamos kable() para tablas bonitas en R Markdown
+# Mostrar las tablas con formato bonito usando kable()
 knitr::kable(tabla_pb2, digits = 3, caption = "Modelo Lineal: Muertes por Parkinson ~ Nivel de Plomo (Pb)")
 
 knitr::kable(tabla_hg2, digits = 3, caption = "Modelo Lineal: Muertes por Parkinson ~ Nivel de Mercurio (Hg)")
@@ -727,7 +733,8 @@ En primer lugar, vamos a identificar los genes que interactúan con el Plomo y c
 
 ```{r grafico_barras_pbhg_parkinson_final, echo=FALSE, message=FALSE, warning=FALSE, fig.width=9, fig.height=6, results='hide'}
 
-# --- FUNCIÓN DE LIMPIEZA DE GENES (Estilo Tidyverse) ---
+# Funcion de limpieza de genes
+# Separa genes que aparecen juntos en una celda y devuelve una lista única de genes en formato limpio.
 limpiar_genes <- function(df) {
   df %>%
     separate_rows(mappedGenes, sep = ',') %>%
@@ -738,11 +745,11 @@ limpiar_genes <- function(df) {
     as.character()
 }
 
-# --- 1. CARGA Y PROCESAMIENTO DE DATOS ---
+#  carga y procesamiento de datos
 df_metales <- read_csv("input/metales_pesados.csv")
 df_parkinson <- read_csv("input/genesParkinsonFiltrado.csv")
 
-# A) Obtener Genes que Interactúan con Plomo (Pb) y Mercurio (Hg)
+#  Seleccionar genes que interactúan con Plomo (Pb) y Mercurio (Hg)
 keywords_metales <- c('lead', 'Pb', 'mercury', 'mercuric', 'Hg', 'plomo', 'mercurio')
 set_metales_pbhg <- df_metales %>%
   filter(str_detect(ChemicalName, regex(paste(keywords_metales, collapse = '|'), ignore_case = TRUE))) %>%
@@ -751,10 +758,10 @@ set_metales_pbhg <- df_metales %>%
   na.omit() %>%
   as.character()
 
-# B) Obtener Genes Asociados a Parkinson (GWAS)
+#  Obtener genes asociados a Parkinson usando la función de limpieza
 set_parkinson_gwas <- limpiar_genes(df_parkinson)
 
-# --- 2. PREPARAR DATOS PARA EL GRÁFICO DE BARRAS ---
+# Calcular cuántos genes son exclusivos de Pb/Hg, exclusivos de Parkinson y cuántos están en ambos
 
 interseccion_size <- length(intersect(set_metales_pbhg, set_parkinson_gwas))
 solo_pbhg_size <- length(set_metales_pbhg) - interseccion_size
@@ -771,7 +778,7 @@ df_plot_data <- tibble(
   Cantidad = c(solo_pbhg_size, solo_parkinson_size, interseccion_size)
 )
 
-# --- 3. GENERACIÓN DEL GRÁFICO DE BARRAS  ---
+# Crear el grafico de barras
 
 p <- ggplot(df_plot_data, aes(x = Categoria, y = Cantidad, fill = Categoria)) +
   geom_bar(stat = "identity", width = 0.7) + 
@@ -794,7 +801,8 @@ p <- ggplot(df_plot_data, aes(x = Categoria, y = Cantidad, fill = Categoria)) +
   ) +
   ylim(0, max(df_plot_data$Cantidad) * 1.1)
 
-# LÍNEA CRÍTICA FINAL: Usamos print(p) para forzar la salida gráfica.
+# Mostrar el grafico.
+
 print(p)
 ```
 
@@ -815,13 +823,13 @@ Ahora vamos a extender el análisis de toxicidad gen-ambiente al contexto de la 
 ```{r genes-nocivos-parkinson, echo=FALSE, message = FALSE, warning = FALSE, fig.width=9, fig.height=6}
 
 
-# 1. CARGAR DATOS: Ejecuta el script de Parkinson para obtener df_combinado
+#se ejecuta el script que prepara las interacciones de Parkinson y metales
 source("filtradoDatos/parkinsonMetalesGenes.R")
 
-# Renombrar 'df_combinado' (el resultado del source) a 'df_parkinson' para el análisis:
+# Renombrar el resultado del script a 'df_parkinson' para trabajar con él
 df_parkinson <- df_combinado
 
-# 2. Filtrar solo los genes nocivos (Genes de Riesgo: OR > 1)
+#  Filtrar solo los genes considerados de riesgo (OR > 1)
 df_nocivos_parkinson <- df_parkinson %>%
   filter(orValue > 1) %>%
   # Contar la cantidad de genes de riesgo únicos afectados por cada químico
@@ -833,7 +841,7 @@ df_nocivos_parkinson <- df_parkinson %>%
   # Ordenar de mayor a menor número de genes afectados
   arrange(desc(Genes_Afectados))
 
-# 3. Generar el Gráfico de Barras 
+#  Crear gráfico de barras con ggplot
 plot_nocivos_parkinson <- ggplot(df_nocivos_parkinson,
                                    aes(x = reorder(ChemicalName, Genes_Afectados),
                                        y = Genes_Afectados,
@@ -855,7 +863,7 @@ plot_nocivos_parkinson <- ggplot(df_nocivos_parkinson,
   scale_y_continuous(expand = expansion(mult = c(0, 0.1))) +
   guides(fill = "none")
 
-# Imprimir la gráfica para que se muestre en el R Markdown
+#  Mostrar el gráfico
 print(plot_nocivos_parkinson)
 ```
 
@@ -870,9 +878,10 @@ En conclusión, el patrón de riesgo genético para el Parkinson también está 
 ### ¿Implica la exposion a un metal directamente que vaya a haber un aumento de desarrollar parkinson?
 
 ```{r genes-interaccion-parkinson, fig.width=9, fig.height=6}
+#  Leer los datos de interacciones entre metales y genes relacionados con Parkinson
 df <- read.csv("results/Analisis_Genes_Metales_Parkinson_SoloOdds.csv", stringsAsFactors = FALSE)
 
-# 2. Procesamiento de datos
+#  Procesamiento de datos
 df_clean <- df %>%
   mutate(Metal_Effect = case_when(
     grepl("increases\\^expression", InteractionActions) & !grepl("decreases\\^expression", InteractionActions) ~ "Metal Aumenta Expresión",
@@ -900,7 +909,7 @@ df_clean <- df %>%
     )
   )
 
-# 3. Generar el gráfico estático 
+#  Crear el gráfico estático con ggplot 
 p <- ggplot(df_clean, aes(x = LogOR, y = LogP, color = Scenario, text = hover_text)) +
   geom_point(alpha = 0.6, size = 2) +
   geom_vline(xintercept = 0, linetype = "dashed", color = "gray40") +
@@ -923,8 +932,8 @@ p <- ggplot(df_clean, aes(x = LogOR, y = LogP, color = Scenario, text = hover_te
     strip.text = element_text(size = 10, face = "bold")
   )
 
-# 4. Convertir a interactivo con plotly
-# 'tooltip = "text"' le dice que use solo nuestra columna personalizada
+#  Convertir el gráfico en interactivo con plotly
+# 'tooltip = "text"' asegura que se muestre nuestro texto personalizado al pasar el ratón
 ggplotly(p, tooltip = "text")
 ```
 
