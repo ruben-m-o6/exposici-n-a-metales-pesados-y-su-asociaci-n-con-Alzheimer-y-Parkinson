@@ -1,0 +1,32 @@
+============================================================================
+LIBRERÍAS R
+============================================================================
+tidyverse
+readr
+dplyr
+tidyr
+ggplot2
+stringr
+purrr
+tibble
+forcats
+lubridate
+jsonlite
+tidyjson
+rjson
+janitor
+countrycode
+readxl
+broom
+ggrepel
+lobstr
+rmarkdown
+knitr
+
+============================================================================
+LIBRERÍAS PYTHON 
+============================================================================
+pandas
+numpy
+matplotlib
+seaborn
