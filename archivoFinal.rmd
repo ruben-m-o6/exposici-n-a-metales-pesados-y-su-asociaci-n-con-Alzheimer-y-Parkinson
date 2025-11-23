@@ -622,7 +622,102 @@ Ambos analisis concuerdan con lo visto en los graficos anteriores.
 
 ## ¿Cómo evolucionan los niveles de Plomo/Mercurio y las muertes por Parkinson a lo largo del tiempo?
 
+Este gráfico rastrea los cambios en la exposición a Plomo y las Muertes por Parkinson a lo largo del tiempo, buscando la correlación espuria.
 
+```{r grafico-relacion-Parkinson-Plomo, fig.width=9, fig.height=6}
+# Usamos df2 para Parkinson
+df_pb_multi_year_park <- df2 %>%
+  filter(metal == "Pb") %>%
+  group_by(country) %>%
+  filter(n() > 1) %>% 
+  ungroup()
+
+df_scaled_park <- df_pb_multi_year_park %>%
+  group_by(country) %>%
+  mutate(
+    # Rescalamos las muertes al rango de los valores de Pb para la visualización conjunta
+    scaled_muertes = scales::rescale(numero_muertes, to = range(value, na.rm = TRUE)),
+    actual_muertes = numero_muertes 
+  ) %>%
+  ungroup()
+
+p_combined_trends_park <- ggplot(df_scaled_park, aes(x = year, group = country)) +
+  
+  geom_line(aes(y = value, color = country, linetype = "Plomo (Pb)"), size = 1) +
+  geom_point(aes(y = value, color = country, 
+                 text = paste("País:", country, "<br>Año:", year, "<br>Plomo (P50):", round(value, 2), "µg/L")), 
+             size = 3) +
+
+  geom_line(aes(y = scaled_muertes, color = country, linetype = "Muertes Parkinson (Escalado)"), size = 1, alpha = 0.7) +
+  geom_point(aes(y = scaled_muertes, color = country, 
+                 text = paste("País:", country, "<br>Año:", year, "<br>Muertes Parkinson:", round(actual_muertes, 0), "<br>Muertes (Escalado):", round(scaled_muertes, 2))), 
+             size = 3, alpha = 0.7) +
+  facet_wrap(~ country, scales = "free_y", ncol = 2) + 
+  scale_linetype_manual(name = "Métrica", values = c("Plomo (Pb)" = "solid", "Muertes Parkinson (Escalado)" = "dashed")) +
+  labs(
+    title = "Evolución Temporal de Plomo (P50) y Muertes por Parkinson",
+    subtitle = "Los datos de muertes por Parkinson se han escalado para visualización conjunta. El patrón de 'tendencias opuestas' se repite.",
+    y = "Nivel (µg/L) / Muertes (Escalado)",
+    x = "Año",
+    color = "País"
+  ) +
+  theme_bw() +
+  theme(legend.position = "bottom",
+        plot.title = element_text(face = "bold"),
+        strip.text = element_text(face = "bold"))
+
+ggplotly(p_combined_trends_park, tooltip = "text")
+```
+
+Se evidencia una clara correlación negativa (tendencias opuestas): la concentración de Plomo en sangre disminuye drásticamente a lo largo del tiempo debido a las regulaciones de salud pública, mientras que las muertes por Parkinson (impulsadas por factores demográficos como el envejecimiento y la mejora diagnóstica) aumentan. Este patrón idéntico en ambas enfermedades neurodegenerativas demuestra que la correlación negativa no es una relación causal biológica, sino un artefacto estadístico impulsado por el factor de confusión demográfico (el tiempo/edad).
+
+```{r grafico-relacion-Parkinson-Mercurio, fig.width=9, fig.height=6}
+# Usamos df2 para Parkinson
+df_hg_multi_year_park <- df2 %>%
+  filter(metal == "Hg") %>%
+  group_by(country) %>%
+  filter(n() > 1) %>% 
+  ungroup()
+
+df_scaled_hg_park <- df_hg_multi_year_park %>%
+  group_by(country) %>%
+  mutate(
+    # Rescalamos las muertes al rango de los valores de Hg
+    scaled_muertes = scales::rescale(numero_muertes, to = range(value, na.rm = TRUE)),
+    actual_muertes = numero_muertes 
+  ) %>%
+  ungroup()
+
+p_combined_trends_hg_park <- ggplot(df_scaled_hg_park, aes(x = year, group = country)) +
+
+  geom_line(aes(y = value, color = country, linetype = "Mercurio (Hg)"), size = 1) +
+  geom_point(aes(y = value, color = country, 
+                 text = paste("País:", country, "<br>Año:", year, "<br>Mercurio (P50):", round(value, 2), "µg/L")), 
+             size = 3) +
+  
+  geom_line(aes(y = scaled_muertes, color = country, linetype = "Muertes Parkinson (Escalado)"), size = 1, alpha = 0.7) +
+  geom_point(aes(y = scaled_muertes, color = country, 
+                 text = paste("País:", country, "<br>Año:", year, "<br>Muertes Parkinson:", round(actual_muertes, 0), "<br>Muertes (Escalado):", round(scaled_muertes, 2))), 
+             size = 3, alpha = 0.7) +
+  facet_wrap(~ country, scales = "free_y", ncol = 2) +
+  scale_linetype_manual(name = "Métrica", values = c("Mercurio (Hg)" = "solid", "Muertes Parkinson (Escalado)" = "dashed")) +
+  labs(
+    title = "Evolución Temporal de Mercurio (P50) y Muertes por Parkinson",
+    subtitle = "Los datos de muertes por Parkinson se han escalado para visualización conjunta. El Mercurio muestra mayor estabilidad que el Plomo.",
+    y = "Nivel (µg/L) / Muertes (Escalado)",
+    x = "Año",
+    color = "País"
+  ) +
+  theme_bw() +
+  theme(legend.position = "bottom",
+        plot.title = element_text(face = "bold"),
+        strip.text = element_text(face = "bold"))
+
+ggplotly(p_combined_trends_hg_park, tooltip = "text")
+```
+
+
+El Mercurio, al ser más estable en el tiempo y no estar sujeto a una caída tan drástica como el Plomo, no produce el mismo sesgo estadístico. La falta de una relación clara en el gráfico de Mercurio corrobora la conclusión: la correlación entre metales y mortalidad a nivel poblacional está dominada por factores socioeconómicos y demográficos que enmascaran cualquier efecto biológico real.
 
 ## ¿Qué genes interactúan con Hg/Pb y cuántos de ellos coinciden con los genes con asociación en GWAS?
 
