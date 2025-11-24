@@ -395,5 +395,5 @@ Este proyecto está bajo la licencia **MIT**. Ver archivo [`LICENSE`](LICENSE) p
 ## 📧 Contacto
 
 - **Autor:** Rubén M. ([@ruben-m-o6](https://github.com/ruben-m-o6))
-- **Autor:** Álvaro C. ([@Acp1038])
+- **Autor:** Álvaro C. ([@Acp1038](https://github.com/Acp1038))
 - **Autor:** Adrian O  ([(AdriiannOrive](https://github.com/AdriiannOrive))
