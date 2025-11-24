@@ -57,7 +57,7 @@ En este informe, exploramos la relación entre la exposición a metales pesados,
 La metodología seguida en este estudio incluye la recopilación y filtrado de datos relevantes, la integración de diferentes fuentes de información y el análisis estadístico para identificar posibles correlaciones entre la exposición a metales pesados y su incidencia en las enfermedades del Alzheimer y Parkinson.
 
 ## Mapa de los países del estudio
-```{r mapa-europa, message=FALSE, warning=FALSE}
+```{r mapa-europa,echo=TRUE, message=FALSE, warning=FALSE}
 # Descargar datos de Europa
 europa <- ne_countries(continent = "Europe", scale = "medium", returnclass = "sf")
 
@@ -90,7 +90,7 @@ df2 <- read_csv("results/muertesParkinson_HgPb.csv", show_col_types = FALSE)
 
 # ¿Se observa patrón temporal en la exposición (disminución/aumento) y cómo se relaciona con cambios en mortalidad?
 
-```{r grafico-tendencia-metales, fig.width=10, fig.height=5}
+```{r grafico-tendencia-metales,echo=TRUE, fig.width=10, fig.height=5}
 temporal_plot <- ggplot(df, aes(x = year, y = value, color = country, group = country)) +
   geom_line(linewidth = 1) + 
   geom_point(size = 3) +       
@@ -124,7 +124,7 @@ Nota importante: la variable `numero_muertes` no es un conteo exacto sino una es
 ## ¿El nivel del metal predice el número de muertes?
 
 Vamos a ver esto mediante un gráfico de dispersión con línea de regresión, separado en dos gráficos (uno para Hg y otro para Pb). Cada gráfico mostrará el número de muertes en el eje Y y el nivel del metal en el eje X.
-```{r plot-correlaciones, echo=FALSE, fig.width=10}
+```{r plot-correlaciones, echo=TRUE, fig.width=10}
 # 1. Separar los datos
 df_pb <- filter(df, metal == "Pb")
 df_hg <- filter(df, metal == "Hg")
@@ -180,7 +180,7 @@ En este caso, la línea de regresión negra muestra una **ligera pendiente posit
 
 ## ANALISIS NUMERICO
 
-```{r}
+```{r,echo=TRUE}
 # 1. Separar los datos
 df_pb <- filter(df, metal == "Pb")
 df_hg <- filter(df, metal == "Hg")
@@ -210,7 +210,7 @@ Ambos analisis concuerdan con lo visto en los graficos anteriores.
 
 El segundo paso, es probar si existe algún tipo de correlación entre la evolución temporal de la exposición y el número de muertes por Alzheimer. Para ello, vamos a crear un gráfico de dispersión similar a los anteriores, pero en este caso, vamos a conectar los puntos de cada país con flechas que indiquen la dirección temporal (de años más antiguos a más recientes). Esto nos permitirá visualizar cómo ha cambiado la relación entre la exposición y las muertes a lo largo del tiempo.
 # Ajustamos el tamaño de la figura
-```{r grafico-relacion-alzheimer-Plomo, fig.width=9, fig.height=6}
+```{r grafico-relacion-alzheimer-Plomo,echo=TRUE, fig.width=9, fig.height=6}
 
 
 #  Filtrar datos: nos quedamos solo con plomo (Pb) y países con más de un año de información
@@ -263,7 +263,7 @@ ggplotly(p_combined_trends_alz, tooltip = "text")
 
 En el gráfico anterior podemos acabar de concluir lo que se puede intuir en el anterior y demostrando que lo que se menciona en gráficos superiores esta en lo correcto. Debido a que el Plomo disminuye mientras que las muertes aumentan simultáneamente a lo largo del tiempo, y como se mencionaba anteriormente se establece una Correlación Negativa (a mayor cantidad de plomo, menor número de muertes), lo cuál es lo opuesto a lo esperado cuando estamos hablando de una neurotoxina que puede resultar perjudicial en otros muchos aspectos. El patrón que hemos observado es crucial porque demuestra que la correlación entre estas dos variables y la mortalidad no es una simple relación causal biológica, sino un mero artefacto estadístico impulsado por el factor de confusión demográfico que enmascara cualquier posible efecto de los metales
 # Ajustamos el tamaño de la figura
-````{r grafico-relacion-alzheimer-Mercurio, fig.width=9, fig.height=6}
+````{r grafico-relacion-alzheimer-Mercurio,echo=TRUE, fig.width=9, fig.height=6}
 
 #  Filtrar datos: nos quedamos solo con Mercurio (Hg) y países con más de un año de información
 df_hg_multi_year_alz <- df %>%
@@ -321,7 +321,7 @@ Una de las áreas clave dentro de la investigación de enfermedades como el Alzh
 
 Primeramente, vamos a identificar los genes que interactúan con el Plomo y con el Mercurio y a su vez los vamos a extraer y unificar estos genes que interactuan con los metales, según si estan asociados con genes en estudios GWAS
 
-```{r genes-interactuan-metales, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}  
+```{r genes-interactuan-metales, echo=TRUE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}  
 # Función para limpiar la lista de genes:
 limpiar_genes <- function(df) {
   df %>%
@@ -409,7 +409,7 @@ Este análisis busca identificar la superposición molecular exacta: aquellos ge
 
 A continuación, la siguiente tabla resume la magnitud de esta doble vulnerabilidad al cuantificar los genes de riesgo únicos que cumplen ambas condiciones para cada patología.
 
-```{r genes-nocivos-alzheimer, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}
+```{r genes-nocivos-alzheimer, echo=TRUE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}
 #  Cargar el script que prepara los datos combinados
 source("filtradoDatos/alzheimerMetalesGenes.R")
 
@@ -465,7 +465,7 @@ A partir de este gráfico podemos realizar un análisis del ranking de genes noc
 En conclusión, el Ranking de genes nocivos establece una jerarquía donde los derivados de Mercurio Orgánico representan la mayor amenaza en términos de amplitud de genes de riesgo afectados, informando nuestra hipótesis de que estos compuestos son los principales impulsores de la sinergia tóxica.
 
 ### ¿Implica la exposion a un metal directamente que vaya a haber un aumento de desarrollar alzheimer?
-```{r genes-interaccion-alzheimer-, echo=FALSE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}
+```{r genes-interaccion-alzheimer-, echo=TRUE, message = FALSE, warning = FALSE, fig.width= 9, fig.height=6}
 #  Leer los datos de interacciones entre metales y genes relacionados con Alzheimer
 df <- read.csv("results/Analisis_Genes_Metales_Alzheimer_SoloOdds.csv", stringsAsFactors = FALSE)
 
@@ -545,7 +545,7 @@ Nota importante: la variable `numero_muertes` no es un conteo exacto sino una es
 ## ¿El nivel del metal predice el número de muertes?
 
 Vamos a ver esto mediante un gráfico de dispersión con línea de regresión, separado en dos gráficos (uno para Hg y otro para Pb). Cada gráfico mostrará el número de muertes en el eje Y y el nivel del metal en el eje X.
-```{r plot-correlaciones2, echo=FALSE, fig.width=10}
+```{r plot-correlaciones2, echo=TRUE, fig.width=10}
 # Separar los datos en dos grupos: uno para Plomo (Pb) y otro para Mercurio (Hg)
 df_pb2 <- filter(df2, metal == "Pb")
 df_hg2 <- filter(df2, metal == "Hg")
@@ -600,7 +600,7 @@ En este caso, la línea de regresión negra muestra una **ligera pendiente posit
 
 ## ANALISIS NUMERICO
 
-```{r}
+```{r,echo=TRUE}
 #  Separar los datos en dos grupos: uno con Plomo (Pb) y otro con Mercurio (Hg)
 df_pb_parkinson <- filter(df2, metal == "Pb")
 df_hg_parkinson <- filter(df2, metal == "Hg")
@@ -630,7 +630,7 @@ Ambos analisis concuerdan con lo visto en los graficos anteriores.
 
 Este gráfico rastrea los cambios en la exposición a Plomo y las Muertes por Parkinson a lo largo del tiempo, buscando la correlación espuria.
 
-```{r grafico-relacion-Parkinson-Plomo, fig.width=9, fig.height=6}
+```{r grafico-relacion-Parkinson-Plomo,echo=TRUE, fig.width=9, fig.height=6}
 # Usamos df2 para Parkinson
 df_pb_multi_year_park <- df2 %>%
   filter(metal == "Pb") %>%
@@ -677,7 +677,7 @@ ggplotly(p_combined_trends_park, tooltip = "text")
 
 Se evidencia una clara correlación negativa (tendencias opuestas): la concentración de Plomo en sangre disminuye drásticamente a lo largo del tiempo debido a las regulaciones de salud pública, mientras que las muertes por Parkinson (impulsadas por factores demográficos como el envejecimiento y la mejora diagnóstica) aumentan. Este patrón idéntico en ambas enfermedades neurodegenerativas demuestra que la correlación negativa no es una relación causal biológica, sino un artefacto estadístico impulsado por el factor de confusión demográfico (el tiempo/edad).
 
-```{r grafico-relacion-Parkinson-Mercurio, fig.width=9, fig.height=6}
+```{r grafico-relacion-Parkinson-Mercurio,echo=TRUE, fig.width=9, fig.height=6}
 # Usamos df2 para Parkinson
 df_hg_multi_year_park <- df2 %>%
   filter(metal == "Hg") %>%
@@ -731,7 +731,7 @@ Tras analizar la superposición gen-ambiente en el contexto de la enfermedad de 
 
 En primer lugar, vamos a identificar los genes que interactúan con el Plomo y con el Mercurio, y a su vez, vamos a extraer y unificar estos genes que interactúan con los metales, según si están asociados con los genes en estudios GWAS para la Enfermedad de Parkinson.
 
-```{r grafico_barras_pbhg_parkinson_final, echo=FALSE, message=FALSE, warning=FALSE, fig.width=9, fig.height=6, results='hide'}
+```{r grafico_barras_pbhg_parkinson_final, echo=TRUE, message=FALSE, warning=FALSE, fig.width=9, fig.height=6, results='hide'}
 
 # Funcion de limpieza de genes
 # Separa genes que aparecen juntos en una celda y devuelve una lista única de genes en formato limpio.
@@ -820,7 +820,7 @@ La intersección de 174 genes entre las dianas de Plomo/Mercurio (Pb/Hg) y los g
 ## Evaluación de la Toxicidad del Mercurio (Hg) y Plomo (Pb) en Variantes Genéticas Asociadas a Parkinson.  
 Ahora vamos a extender el análisis de toxicidad gen-ambiente al contexto de la Enfermedad de Parkinson (EP). Al igual que en el Alzheimer, es crucial determinar si los genes que interactúan con el Plomo y el Mercurio coinciden con los genes específicos implicados en la susceptibilidad al Parkinson identificados por estudios GWAS.
 
-```{r genes-nocivos-parkinson, echo=FALSE, message = FALSE, warning = FALSE, fig.width=9, fig.height=6}
+```{r genes-nocivos-parkinson, echo=TRUE, message = FALSE, warning = FALSE, fig.width=9, fig.height=6}
 
 
 #se ejecuta el script que prepara las interacciones de Parkinson y metales
@@ -877,7 +877,7 @@ En conclusión, el patrón de riesgo genético para el Parkinson también está 
 
 ### ¿Implica la exposion a un metal directamente que vaya a haber un aumento de desarrollar parkinson?
 
-```{r genes-interaccion-parkinson, fig.width=9, fig.height=6}
+```{r genes-interaccion-parkinson,echo=TRUE, fig.width=9, fig.height=6}
 #  Leer los datos de interacciones entre metales y genes relacionados con Parkinson
 df <- read.csv("results/Analisis_Genes_Metales_Parkinson_SoloOdds.csv", stringsAsFactors = FALSE)
 
